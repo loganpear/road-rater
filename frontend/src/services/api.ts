@@ -280,6 +280,9 @@ export async function uploadAndAnalyze(
     onProgress({ status: 'complete', progress: 100, message: 'Analysis complete!', analysisId: result.id });
     return result;
   }
+  
+  const backgroundResponse = await response.json();
+
 
   // REAL mode (backend)
   onProgress({ status: 'uploading', progress: 0, message: 'Uploading video…' });
