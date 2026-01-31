@@ -15,11 +15,11 @@ export default defineConfig(({ mode }) => ({
     // Lets the frontend call /api/* and /uploads/* without CORS headaches in dev.
     proxy: {
       "/api": {
-        target: "http://localhost:3001",
+        target: "http://localhost:4000",
         changeOrigin: true,
       },
       "/uploads": {
-        target: "http://localhost:3001",
+        target: "http://localhost:4000",
         changeOrigin: true,
       },
     },

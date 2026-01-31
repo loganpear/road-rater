@@ -1,53 +1,107 @@
 import fs from "node:fs";
 import path from "node:path";
-import sqlite3 from "sqlite3";
-import { env } from "../config/env.js";
+
 import { logger } from "../config/logger.js";
 
-sqlite3.verbose();
+// ---- Pure JS "DB" (no native bindings) ----
+// Persists to storage/app.json so you keep history between restarts.
 
-let db;
+const STORAGE_DIR = "storage";
+const DATA_PATH = path.join(STORAGE_DIR, "app.json");
 
-export function getDb() {
-  if (!db) throw new Error("DB not initialized");
-  return db;
+/** @type {Map<string, any>} */
+const jobs = new Map();
+/** @type {Map<string, any>} */
+const analyses = new Map();
+
+function nowIso() {
+  return new Date().toISOString();
+}
+
+function loadFromDisk() {
+  try {
+    if (!fs.existsSync(DATA_PATH)) return;
+    const raw = fs.readFileSync(DATA_PATH, "utf-8");
+    const parsed = JSON.parse(raw);
+
+    if (parsed?.jobs) for (const j of parsed.jobs) jobs.set(j.id, j);
+    if (parsed?.analyses) for (const a of parsed.analyses) analyses.set(a.id, a);
+  } catch (e) {
+    logger.warn("Failed to load storage/app.json; starting fresh", e);
+  }
+}
+
+let saveTimer;
+function scheduleSave() {
+  if (saveTimer) return;
+  saveTimer = setTimeout(() => {
+    saveTimer = null;
+    try {
+      fs.mkdirSync(STORAGE_DIR, { recursive: true });
+      const payload = {
+        savedAt: nowIso(),
+        jobs: Array.from(jobs.values()),
+        analyses: Array.from(analyses.values())
+      };
+      fs.writeFileSync(DATA_PATH, JSON.stringify(payload, null, 2), "utf-8");
+    } catch (e) {
+      logger.warn("Failed to persist storage/app.json", e);
+    }
+  }, 250);
 }
 
 export async function initDb() {
-  fs.mkdirSync(path.dirname(env.DB_PATH), { recursive: true });
-
-  db = new sqlite3.Database(env.DB_PATH);
-
-  const schemaPath = new URL("./schema.sql", import.meta.url);
-  const schema = fs.readFileSync(schemaPath, "utf-8");
-
-  await exec(schema);
-  logger.info("DB initialized:", env.DB_PATH);
+  fs.mkdirSync(STORAGE_DIR, { recursive: true });
+  loadFromDisk();
+  logger.info("In-memory DB initialized (persisting to storage/app.json)");
 }
 
-export function exec(sql) {
-  return new Promise((resolve, reject) => {
-    getDb().exec(sql, (err) => (err ? reject(err) : resolve()));
-  });
+// ---- Job API ----
+export function createJob({ jobId, analysisId, originalName, storedFilename }) {
+  const job = {
+    id: jobId,
+    status: "queued",
+    progress: 0,
+    message: "Queued…",
+    resultId: analysisId,
+    originalFilename: originalName,
+    storedPath: storedFilename,
+    createdAt: nowIso(),
+    updatedAt: nowIso()
+  };
+  jobs.set(jobId, job);
+  scheduleSave();
+  return job;
 }
 
-export function run(sql, params = []) {
-  return new Promise((resolve, reject) => {
-    getDb().run(sql, params, function (err) {
-      if (err) reject(err);
-      else resolve({ changes: this.changes, lastID: this.lastID });
-    });
-  });
+export function updateJob(jobId, patch) {
+  const prev = jobs.get(jobId);
+  if (!prev) return null;
+  const next = { ...prev, ...patch, updatedAt: nowIso() };
+  jobs.set(jobId, next);
+  scheduleSave();
+  return next;
 }
 
-export function get(sql, params = []) {
-  return new Promise((resolve, reject) => {
-    getDb().get(sql, params, (err, row) => (err ? reject(err) : resolve(row)));
-  });
+export function getJob(jobId) {
+  return jobs.get(jobId) ?? null;
 }
 
-export function all(sql, params = []) {
-  return new Promise((resolve, reject) => {
-    getDb().all(sql, params, (err, rows) => (err ? reject(err) : resolve(rows)));
-  });
+// ---- Analysis API ----
+export function setAnalysis(analysis) {
+  analyses.set(analysis.id, analysis);
+  scheduleSave();
+  return analysis;
 }
+
+export function getAnalysis(analysisId) {
+  return analyses.get(analysisId) ?? null;
+}
+
+export function listAnalyses(limit = 25) {
+  return Array.from(analyses.values())
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, limit);
+}
+
+export { nowIso };

@@ -1,74 +1,187 @@
-import { Router } from 'express';
-import multer from 'multer';
-import path from 'node:path';
-import fs from 'node:fs';
-import ffmpeg from 'fluent-ffmpeg';
-import { run, get } from '../db/index.js';
-import { logger } from '../config/logger.js';
+import { Router } from "express";
+import multer from "multer";
+import fs from "node:fs";
+
+import { env } from "../config/env.js";
+import { logger } from "../config/logger.js";
+import { makeId } from "../utils/id.js";
+import {
+  createJob,
+  updateJob,
+  getJob,
+  setAnalysis,
+  getAnalysis,
+  listAnalyses,
+  nowIso
+} from "../db/index.js";
 
 export const router = Router();
 
-const upload = multer({ dest: 'backend/data/uploads/' });
+// Ensure upload directory exists
+fs.mkdirSync(env.UPLOAD_DIR, { recursive: true });
 
-router.post('/analyze', upload.single('video'), async (req, res, next) => {
-  if (!req.file) {
-    return res.status(400).json({ error: 'No video file uploaded.' });
-  }
+const upload = multer({
+  dest: env.UPLOAD_DIR,
+  limits: { fileSize: env.MAX_UPLOAD_MB * 1024 * 1024 }
+});
 
-  const videoFile = req.file;
-  const videoFilePath = videoFile.path;
+// Build a mock analysis (swap later with real pipeline)
+function buildMockAnalysis({ analysisId, originalName, storedFilename }) {
+  const videoUrl = `/uploads/${storedFilename}`; // served as static in app.js
 
+  return {
+    id: analysisId,
+    videoName: originalName,
+    videoDuration: 0,
+    videoUrl,
+    createdAt: nowIso(),
+    score: 72,
+    grade: "C",
+    summary:
+      "Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.",
+    events: [
+      {
+        id: "evt_1",
+        type: "tailgating",
+        timestamp: 12,
+        duration: 8,
+        severity: "moderate",
+        points: -5,
+        description: "Following distance dropped below 2 seconds at 45 mph"
+      },
+      {
+        id: "evt_2",
+        type: "harsh_braking",
+        timestamp: 35,
+        duration: 2,
+        severity: "high",
+        points: -8,
+        description: "Sudden deceleration detected"
+      }
+    ],
+    breakdown: {
+      following_distance: {
+        score: 65,
+        maxScore: 100,
+        deductions: [
+          { reason: "Tailgating incident at 0:12", points: -5 },
+          { reason: "Extended tailgating at 2:32", points: -4 }
+        ],
+        tips: [
+          "Maintain at least 3 seconds of following distance",
+          "Increase distance in adverse weather conditions",
+          "Use the 3-second rule"
+        ]
+      },
+      braking: {
+        score: 70,
+        maxScore: 100,
+        deductions: [{ reason: "Harsh braking event detected", points: -8 }],
+        tips: [
+          "Anticipate traffic flow to brake gradually",
+          "Start braking earlier when approaching stops",
+          "Watch traffic ahead"
+        ]
+      },
+      acceleration: {
+        score: 80,
+        maxScore: 100,
+        deductions: [{ reason: "Hard acceleration from stop", points: -4 }],
+        tips: [
+          "Accelerate smoothly from stops",
+          "Gradual throttle application saves fuel",
+          "Match the flow of traffic when merging"
+        ]
+      },
+      lane_discipline: {
+        score: 85,
+        maxScore: 100,
+        deductions: [{ reason: "Lane departure without signal", points: -3 }],
+        tips: ["Always use turn signals", "Check mirrors and blind spots", "Stay centered in your lane"]
+      },
+      steering: {
+        score: 80,
+        maxScore: 100,
+        deductions: [{ reason: "Sharp turn at high speed", points: -4 }],
+        tips: ["Reduce speed before entering turns", "Use smooth steering inputs", "Look where you want to go"]
+      }
+    }
+  };
+}
+
+// Health check
+router.get("/health", (_req, res) => {
+  res.json({ ok: true, time: nowIso() });
+});
+
+/**
+ * POST /api/analyze
+ * Frontend sends multipart form-data with field name: "file"
+ * Response: { jobId }
+ */
+router.post("/analyze", upload.single("file"), async (req, res, next) => {
   try {
-    // 1. Create a record in the 'videos' table
-    const videoInsertResult = await run(
-      'INSERT INTO videos (user_id, filename, filepath) VALUES (?, ?, ?)',
-      [1, videoFile.originalname, videoFilePath] // Using default user_id 1
-    );
-    const videoId = videoInsertResult.lastID;
+    if (!req.file) return res.status(400).json({ error: "No video file uploaded." });
 
-    // 2. Create a directory to store the frames for this video
-    const framesDir = path.join('backend/data/frames', String(videoId));
-    fs.mkdirSync(framesDir, { recursive: true });
+    const jobId = makeId("job");
+    const analysisId = makeId("analysis");
 
-
-    // Respond to the client immediately
-    res.status(202).json({
-      message: 'Video upload accepted. Processing in the background.',
-      videoId: videoId,
+    createJob({
+      jobId,
+      analysisId,
+      originalName: req.file.originalname,
+      storedFilename: req.file.filename
     });
 
-    // 3. Use ffmpeg to extract frames in the background
-    ffmpeg(videoFilePath)
-      .on('filenames', function (filenames) {
-        logger.info('Will generate ' + filenames.join(', '));
-      })
-      .on('end', async () => {
-        logger.info(`Finished processing video ID: ${videoId}`);
-        const frameFiles = fs.readdirSync(framesDir);
-        for (const [i, frameFile] of frameFiles.entries()) {
-          const framePath = path.join(framesDir, frameFile);
-          const frameNumber = i + 1;
-          const timestamp = frameNumber; // Assumes 1 frame per second
-          await run(
-            'INSERT INTO frames (video_id, frame_number, filepath, timestamp_in_video) VALUES (?, ?, ?, ?)',
-            [videoId, frameNumber, framePath, timestamp]
-          );
-        }
-        logger.info(`Successfully saved ${frameFiles.length} frames for video ID: ${videoId}`);
-      })
-      .on('error', (err) => {
-        logger.error(`Error processing video ID ${videoId}:`, err);
-        // Here you might want to update the video's status in the DB to 'failed'
-      })
-      .screenshots({
-        // Takes 1 frame per second
-        fps: 1,
-        folder: framesDir,
-        filename: 'frame-%03d.png', // e.g., frame-001.png
-      });
+    // Respond immediately so frontend can poll
+    res.status(202).json({ jobId });
 
-  } catch (error) {
-    logger.error('Error in /analyze route:', error);
-    next(error);
+    // Background simulation (replace with real inference)
+    setTimeout(() => updateJob(jobId, { status: "processing", progress: 25, message: "Extracting frames…" }), 500);
+    setTimeout(() => updateJob(jobId, { status: "processing", progress: 60, message: "Detecting events…" }), 1400);
+
+    setTimeout(() => {
+      try {
+        const analysis = buildMockAnalysis({
+          analysisId,
+          originalName: req.file.originalname,
+          storedFilename: req.file.filename
+        });
+
+        setAnalysis(analysis);
+        updateJob(jobId, { status: "complete", progress: 100, message: "Complete" });
+      } catch (e) {
+        logger.error("Finalize job failed", e);
+        // Frontend expects status === "error" to stop polling
+        updateJob(jobId, { status: "error", message: "Processing failed" });
+      }
+    }, 2600);
+  } catch (err) {
+    next(err);
   }
+});
+
+/**
+ * GET /api/jobs/:jobId
+ */
+router.get("/jobs/:jobId", (req, res) => {
+  const job = getJob(req.params.jobId);
+  if (!job) return res.status(404).json({ status: "error", message: "Job not found" });
+  res.json({ status: job.status, progress: job.progress, message: job.message, resultId: job.resultId });
+});
+
+/**
+ * GET /api/analysis/:id
+ */
+router.get("/analysis/:id", (req, res) => {
+  const analysis = getAnalysis(req.params.id);
+  if (!analysis) return res.status(404).json({ error: "Analysis not found" });
+  res.json(analysis);
+});
+
+/**
+ * GET /api/history
+ */
+router.get("/history", (_req, res) => {
+  res.json(listAnalyses(25));
 });

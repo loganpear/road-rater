@@ -1,0 +1,739 @@
+{
+  "savedAt": "2026-01-31T23:28:44.536Z",
+  "jobs": [
+    {
+      "id": "job_e8ce91736fc5e864bc5793c593ef7221",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_400f7b2ec9944070d4b6cc8d6d5c4123",
+      "originalFilename": "Farming Simulator 15-2016_04_08-01_03_35.mp4",
+      "storedPath": "c0c20ecbbd9a721f06e6cd94506d5134",
+      "createdAt": "2026-01-31T23:19:55.307Z",
+      "updatedAt": "2026-01-31T23:19:57.921Z"
+    },
+    {
+      "id": "job_c7e138ab95993197a4e6d932720fa89e",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_935b94042418fc85a88484ecfb2edeb1",
+      "originalFilename": "videoplayback.mp4",
+      "storedPath": "8c622dd65efa470f4fad3653be84bab7",
+      "createdAt": "2026-01-31T23:21:55.109Z",
+      "updatedAt": "2026-01-31T23:21:57.728Z"
+    },
+    {
+      "id": "job_e02c74d595d61806fa5e25b84eec68d7",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_3450a6c016d1bd34c6245eed4b1f7b32",
+      "originalFilename": "videoplayback.mp4",
+      "storedPath": "4497752f144d7133e68561d408991da5",
+      "createdAt": "2026-01-31T23:23:36.455Z",
+      "updatedAt": "2026-01-31T23:23:39.062Z"
+    },
+    {
+      "id": "job_2fc378e264b4436a61d0345501305c9b",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_58adfa404e9b74fd78754c3a77b26112",
+      "originalFilename": "videoplayback.mp4",
+      "storedPath": "80268cec2455a4118969a7b4a9a9e5e8",
+      "createdAt": "2026-01-31T23:24:32.791Z",
+      "updatedAt": "2026-01-31T23:24:35.404Z"
+    },
+    {
+      "id": "job_2420ff7bf0ee80f6c87ac479ec2180fd",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_27bb16e7c35c78604fadea84caa7d0b7",
+      "originalFilename": "videoplayback.mp4",
+      "storedPath": "f89e2b62db4a79bd96e0061fde64e144",
+      "createdAt": "2026-01-31T23:27:30.408Z",
+      "updatedAt": "2026-01-31T23:27:33.040Z"
+    },
+    {
+      "id": "job_94945510db4ffc13b911238bbff7a866",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_e7fac69159fd8a355681914d3ecab13d",
+      "originalFilename": "Farming Simulator 15-2016_06_05-19_20_57.mp4",
+      "storedPath": "048ba35adb8e76df26ddd65373e0efac",
+      "createdAt": "2026-01-31T23:28:41.649Z",
+      "updatedAt": "2026-01-31T23:28:44.270Z"
+    }
+  ],
+  "analyses": [
+    {
+      "id": "analysis_400f7b2ec9944070d4b6cc8d6d5c4123",
+      "videoName": "Farming Simulator 15-2016_04_08-01_03_35.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/c0c20ecbbd9a721f06e6cd94506d5134",
+      "createdAt": "2026-01-31T23:19:57.919Z",
+      "score": 72,
+      "grade": "C",
+      "summary": "Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.",
+      "events": [
+        {
+          "id": "evt_1",
+          "type": "tailgating",
+          "timestamp": 12,
+          "duration": 8,
+          "severity": "moderate",
+          "points": -5,
+          "description": "Following distance dropped below 2 seconds at 45 mph"
+        },
+        {
+          "id": "evt_2",
+          "type": "harsh_braking",
+          "timestamp": 35,
+          "duration": 2,
+          "severity": "high",
+          "points": -8,
+          "description": "Sudden deceleration detected"
+        }
+      ],
+      "breakdown": {
+        "following_distance": {
+          "score": 65,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Tailgating incident at 0:12",
+              "points": -5
+            },
+            {
+              "reason": "Extended tailgating at 2:32",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Maintain at least 3 seconds of following distance",
+            "Increase distance in adverse weather conditions",
+            "Use the 3-second rule"
+          ]
+        },
+        "braking": {
+          "score": 70,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Harsh braking event detected",
+              "points": -8
+            }
+          ],
+          "tips": [
+            "Anticipate traffic flow to brake gradually",
+            "Start braking earlier when approaching stops",
+            "Watch traffic ahead"
+          ]
+        },
+        "acceleration": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Hard acceleration from stop",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Accelerate smoothly from stops",
+            "Gradual throttle application saves fuel",
+            "Match the flow of traffic when merging"
+          ]
+        },
+        "lane_discipline": {
+          "score": 85,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Lane departure without signal",
+              "points": -3
+            }
+          ],
+          "tips": [
+            "Always use turn signals",
+            "Check mirrors and blind spots",
+            "Stay centered in your lane"
+          ]
+        },
+        "steering": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Sharp turn at high speed",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Reduce speed before entering turns",
+            "Use smooth steering inputs",
+            "Look where you want to go"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_935b94042418fc85a88484ecfb2edeb1",
+      "videoName": "videoplayback.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/8c622dd65efa470f4fad3653be84bab7",
+      "createdAt": "2026-01-31T23:21:57.728Z",
+      "score": 72,
+      "grade": "C",
+      "summary": "Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.",
+      "events": [
+        {
+          "id": "evt_1",
+          "type": "tailgating",
+          "timestamp": 12,
+          "duration": 8,
+          "severity": "moderate",
+          "points": -5,
+          "description": "Following distance dropped below 2 seconds at 45 mph"
+        },
+        {
+          "id": "evt_2",
+          "type": "harsh_braking",
+          "timestamp": 35,
+          "duration": 2,
+          "severity": "high",
+          "points": -8,
+          "description": "Sudden deceleration detected"
+        }
+      ],
+      "breakdown": {
+        "following_distance": {
+          "score": 65,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Tailgating incident at 0:12",
+              "points": -5
+            },
+            {
+              "reason": "Extended tailgating at 2:32",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Maintain at least 3 seconds of following distance",
+            "Increase distance in adverse weather conditions",
+            "Use the 3-second rule"
+          ]
+        },
+        "braking": {
+          "score": 70,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Harsh braking event detected",
+              "points": -8
+            }
+          ],
+          "tips": [
+            "Anticipate traffic flow to brake gradually",
+            "Start braking earlier when approaching stops",
+            "Watch traffic ahead"
+          ]
+        },
+        "acceleration": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Hard acceleration from stop",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Accelerate smoothly from stops",
+            "Gradual throttle application saves fuel",
+            "Match the flow of traffic when merging"
+          ]
+        },
+        "lane_discipline": {
+          "score": 85,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Lane departure without signal",
+              "points": -3
+            }
+          ],
+          "tips": [
+            "Always use turn signals",
+            "Check mirrors and blind spots",
+            "Stay centered in your lane"
+          ]
+        },
+        "steering": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Sharp turn at high speed",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Reduce speed before entering turns",
+            "Use smooth steering inputs",
+            "Look where you want to go"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_3450a6c016d1bd34c6245eed4b1f7b32",
+      "videoName": "videoplayback.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/4497752f144d7133e68561d408991da5",
+      "createdAt": "2026-01-31T23:23:39.062Z",
+      "score": 72,
+      "grade": "C",
+      "summary": "Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.",
+      "events": [
+        {
+          "id": "evt_1",
+          "type": "tailgating",
+          "timestamp": 12,
+          "duration": 8,
+          "severity": "moderate",
+          "points": -5,
+          "description": "Following distance dropped below 2 seconds at 45 mph"
+        },
+        {
+          "id": "evt_2",
+          "type": "harsh_braking",
+          "timestamp": 35,
+          "duration": 2,
+          "severity": "high",
+          "points": -8,
+          "description": "Sudden deceleration detected"
+        }
+      ],
+      "breakdown": {
+        "following_distance": {
+          "score": 65,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Tailgating incident at 0:12",
+              "points": -5
+            },
+            {
+              "reason": "Extended tailgating at 2:32",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Maintain at least 3 seconds of following distance",
+            "Increase distance in adverse weather conditions",
+            "Use the 3-second rule"
+          ]
+        },
+        "braking": {
+          "score": 70,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Harsh braking event detected",
+              "points": -8
+            }
+          ],
+          "tips": [
+            "Anticipate traffic flow to brake gradually",
+            "Start braking earlier when approaching stops",
+            "Watch traffic ahead"
+          ]
+        },
+        "acceleration": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Hard acceleration from stop",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Accelerate smoothly from stops",
+            "Gradual throttle application saves fuel",
+            "Match the flow of traffic when merging"
+          ]
+        },
+        "lane_discipline": {
+          "score": 85,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Lane departure without signal",
+              "points": -3
+            }
+          ],
+          "tips": [
+            "Always use turn signals",
+            "Check mirrors and blind spots",
+            "Stay centered in your lane"
+          ]
+        },
+        "steering": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Sharp turn at high speed",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Reduce speed before entering turns",
+            "Use smooth steering inputs",
+            "Look where you want to go"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_58adfa404e9b74fd78754c3a77b26112",
+      "videoName": "videoplayback.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/80268cec2455a4118969a7b4a9a9e5e8",
+      "createdAt": "2026-01-31T23:24:35.403Z",
+      "score": 72,
+      "grade": "C",
+      "summary": "Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.",
+      "events": [
+        {
+          "id": "evt_1",
+          "type": "tailgating",
+          "timestamp": 12,
+          "duration": 8,
+          "severity": "moderate",
+          "points": -5,
+          "description": "Following distance dropped below 2 seconds at 45 mph"
+        },
+        {
+          "id": "evt_2",
+          "type": "harsh_braking",
+          "timestamp": 35,
+          "duration": 2,
+          "severity": "high",
+          "points": -8,
+          "description": "Sudden deceleration detected"
+        }
+      ],
+      "breakdown": {
+        "following_distance": {
+          "score": 65,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Tailgating incident at 0:12",
+              "points": -5
+            },
+            {
+              "reason": "Extended tailgating at 2:32",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Maintain at least 3 seconds of following distance",
+            "Increase distance in adverse weather conditions",
+            "Use the 3-second rule"
+          ]
+        },
+        "braking": {
+          "score": 70,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Harsh braking event detected",
+              "points": -8
+            }
+          ],
+          "tips": [
+            "Anticipate traffic flow to brake gradually",
+            "Start braking earlier when approaching stops",
+            "Watch traffic ahead"
+          ]
+        },
+        "acceleration": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Hard acceleration from stop",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Accelerate smoothly from stops",
+            "Gradual throttle application saves fuel",
+            "Match the flow of traffic when merging"
+          ]
+        },
+        "lane_discipline": {
+          "score": 85,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Lane departure without signal",
+              "points": -3
+            }
+          ],
+          "tips": [
+            "Always use turn signals",
+            "Check mirrors and blind spots",
+            "Stay centered in your lane"
+          ]
+        },
+        "steering": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Sharp turn at high speed",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Reduce speed before entering turns",
+            "Use smooth steering inputs",
+            "Look where you want to go"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_27bb16e7c35c78604fadea84caa7d0b7",
+      "videoName": "videoplayback.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/f89e2b62db4a79bd96e0061fde64e144",
+      "createdAt": "2026-01-31T23:27:33.039Z",
+      "score": 72,
+      "grade": "C",
+      "summary": "Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.",
+      "events": [
+        {
+          "id": "evt_1",
+          "type": "tailgating",
+          "timestamp": 12,
+          "duration": 8,
+          "severity": "moderate",
+          "points": -5,
+          "description": "Following distance dropped below 2 seconds at 45 mph"
+        },
+        {
+          "id": "evt_2",
+          "type": "harsh_braking",
+          "timestamp": 35,
+          "duration": 2,
+          "severity": "high",
+          "points": -8,
+          "description": "Sudden deceleration detected"
+        }
+      ],
+      "breakdown": {
+        "following_distance": {
+          "score": 65,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Tailgating incident at 0:12",
+              "points": -5
+            },
+            {
+              "reason": "Extended tailgating at 2:32",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Maintain at least 3 seconds of following distance",
+            "Increase distance in adverse weather conditions",
+            "Use the 3-second rule"
+          ]
+        },
+        "braking": {
+          "score": 70,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Harsh braking event detected",
+              "points": -8
+            }
+          ],
+          "tips": [
+            "Anticipate traffic flow to brake gradually",
+            "Start braking earlier when approaching stops",
+            "Watch traffic ahead"
+          ]
+        },
+        "acceleration": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Hard acceleration from stop",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Accelerate smoothly from stops",
+            "Gradual throttle application saves fuel",
+            "Match the flow of traffic when merging"
+          ]
+        },
+        "lane_discipline": {
+          "score": 85,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Lane departure without signal",
+              "points": -3
+            }
+          ],
+          "tips": [
+            "Always use turn signals",
+            "Check mirrors and blind spots",
+            "Stay centered in your lane"
+          ]
+        },
+        "steering": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Sharp turn at high speed",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Reduce speed before entering turns",
+            "Use smooth steering inputs",
+            "Look where you want to go"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_e7fac69159fd8a355681914d3ecab13d",
+      "videoName": "Farming Simulator 15-2016_06_05-19_20_57.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/048ba35adb8e76df26ddd65373e0efac",
+      "createdAt": "2026-01-31T23:28:44.270Z",
+      "score": 72,
+      "grade": "C",
+      "summary": "Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.",
+      "events": [
+        {
+          "id": "evt_1",
+          "type": "tailgating",
+          "timestamp": 12,
+          "duration": 8,
+          "severity": "moderate",
+          "points": -5,
+          "description": "Following distance dropped below 2 seconds at 45 mph"
+        },
+        {
+          "id": "evt_2",
+          "type": "harsh_braking",
+          "timestamp": 35,
+          "duration": 2,
+          "severity": "high",
+          "points": -8,
+          "description": "Sudden deceleration detected"
+        }
+      ],
+      "breakdown": {
+        "following_distance": {
+          "score": 65,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Tailgating incident at 0:12",
+              "points": -5
+            },
+            {
+              "reason": "Extended tailgating at 2:32",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Maintain at least 3 seconds of following distance",
+            "Increase distance in adverse weather conditions",
+            "Use the 3-second rule"
+          ]
+        },
+        "braking": {
+          "score": 70,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Harsh braking event detected",
+              "points": -8
+            }
+          ],
+          "tips": [
+            "Anticipate traffic flow to brake gradually",
+            "Start braking earlier when approaching stops",
+            "Watch traffic ahead"
+          ]
+        },
+        "acceleration": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Hard acceleration from stop",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Accelerate smoothly from stops",
+            "Gradual throttle application saves fuel",
+            "Match the flow of traffic when merging"
+          ]
+        },
+        "lane_discipline": {
+          "score": 85,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Lane departure without signal",
+              "points": -3
+            }
+          ],
+          "tips": [
+            "Always use turn signals",
+            "Check mirrors and blind spots",
+            "Stay centered in your lane"
+          ]
+        },
+        "steering": {
+          "score": 80,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "Sharp turn at high speed",
+              "points": -4
+            }
+          ],
+          "tips": [
+            "Reduce speed before entering turns",
+            "Use smooth steering inputs",
+            "Look where you want to go"
+          ]
+        }
+      }
+    }
+  ]
+}

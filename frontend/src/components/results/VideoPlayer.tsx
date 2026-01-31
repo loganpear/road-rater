@@ -20,21 +20,54 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
   const [internalTime, setInternalTime] = useState(0);
   const [playbackRate, setPlaybackRate] = useState(1);
 
+  // Scrubbing (dragging the timeline thumb) can cause perceived playback jitter
+  // if we continuously seek while dragging. We track scrub state and only seek
+  // on commit.
+  const [isScrubbing, setIsScrubbing] = useState(false);
+  const [scrubTime, setScrubTime] = useState(0);
+
+  // Avoid feedback-loop jitter: the parent updates currentTime from onTimeUpdate,
+  // which can cause us to keep setting video.currentTime on every render.
+  // We only apply external time when it meaningfully differs (i.e., a real seek).
+  const lastAppliedExternalRef = useRef<number | null>(null);
+  const lastReportedTimeRef = useRef<number>(-1);
+
   const displayTime = currentTime ?? internalTime;
   const safeDuration = Math.max(duration, 0.001);
 
   // Sync external time changes
   useEffect(() => {
     if (currentTime !== undefined && videoRef.current) {
-      videoRef.current.currentTime = currentTime;
+      const el = videoRef.current;
+      const diff = Math.abs(el.currentTime - currentTime);
+
+      // Ignore tiny diffs (often caused by parent state updates) to prevent stutter.
+      if (diff < 0.05) return;
+
+      // If playing, only apply a larger correction to avoid micro-seeks.
+      if (!el.paused && diff < 0.25) return;
+
+      // Also avoid re-applying the exact same external time repeatedly.
+      if (lastAppliedExternalRef.current !== null && Math.abs(lastAppliedExternalRef.current - currentTime) < 0.01) {
+        return;
+      }
+
+      el.currentTime = currentTime;
+      lastAppliedExternalRef.current = currentTime;
     }
   }, [currentTime]);
 
   const handleTimeUpdate = useCallback(() => {
     if (videoRef.current) {
       const time = videoRef.current.currentTime;
-      setInternalTime(time);
-      onTimeUpdate?.(time);
+
+      // Reduce render pressure by only updating state when time changes enough.
+      // (Video timeupdate can fire frequently.)
+      if (Math.abs(time - lastReportedTimeRef.current) >= 0.05) {
+        lastReportedTimeRef.current = time;
+        setInternalTime(time);
+        onTimeUpdate?.(time);
+      }
     }
   }, [onTimeUpdate]);
 
@@ -65,13 +98,21 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
     }
   }, [isMuted]);
 
-  const handleSeek = useCallback((value: number[]) => {
+  const handleSeekCommit = useCallback((value: number[]) => {
+    const t = value?.[0] ?? 0;
     if (videoRef.current) {
-      videoRef.current.currentTime = value[0];
-      setInternalTime(value[0]);
-      onTimeUpdate?.(value[0]);
+      videoRef.current.currentTime = t;
+      setInternalTime(t);
+      onTimeUpdate?.(t);
     }
+    setIsScrubbing(false);
   }, [onTimeUpdate]);
+
+  const handleSeekChange = useCallback((value: number[]) => {
+    const t = value?.[0] ?? 0;
+    setIsScrubbing(true);
+    setScrubTime(t);
+  }, []);
 
   const handlePlaybackRate = useCallback((rate: number) => {
     if (videoRef.current) {
@@ -129,10 +170,11 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
           {/* Progress bar with event markers */}
           <div className="relative">
             <Slider
-              value={[displayTime]}
+              value={[isScrubbing ? scrubTime : displayTime]}
               max={safeDuration}
               step={0.1}
-              onValueChange={handleSeek}
+              onValueChange={handleSeekChange}
+              onValueCommit={handleSeekCommit}
               className="cursor-pointer"
             />
 
@@ -149,7 +191,7 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
                     transform: 'translate(-50%, -50%)',
                     backgroundColor: config.color,
                   }}
-                  onClick={() => handleSeek([event.timestamp])}
+                  onClick={() => handleSeekCommit([event.timestamp])}
                   title={`${config.label} at ${formatDuration(event.timestamp)}`}
                   aria-label={`Jump to ${config.label} at ${formatDuration(event.timestamp)}`}
                 />

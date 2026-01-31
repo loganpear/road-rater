@@ -11,7 +11,8 @@ function required(name, fallback) {
 export const env = {
   PORT: Number(required("PORT", "4000")),
   NODE_ENV: required("NODE_ENV", "development"),
-  CORS_ORIGIN: required("CORS_ORIGIN", "http://localhost:5173"),
+  // Vite dev server in this repo runs on :8080
+  CORS_ORIGIN: required("CORS_ORIGIN", "http://localhost:8080"),
   UPLOAD_DIR: required("UPLOAD_DIR", "uploads"),
   MAX_UPLOAD_MB: Number(required("MAX_UPLOAD_MB", "500")),
   DB_PATH: required("DB_PATH", "storage/app.db"),
