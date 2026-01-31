@@ -1,6 +1,8 @@
 # road-rater
 Spartahack project
 
+Goal: Promote safe driving since drivers wont want their insurace rates to go up from poor drivig. 
+
 Input:
 user uploads a video of driving dashcarm footage
 
