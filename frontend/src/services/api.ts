@@ -12,7 +12,8 @@ const MOCK_ANALYSIS: AnalysisResult = {
   createdAt: new Date().toISOString(),
   score: 72,
   grade: 'C',
-  summary: 'Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.',
+  summary:
+    'Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.',
   events: [
     {
       id: 'evt_1',
@@ -86,9 +87,7 @@ const MOCK_ANALYSIS: AnalysisResult = {
     braking: {
       score: 70,
       maxScore: 100,
-      deductions: [
-        { reason: 'Harsh braking event detected', points: -8 },
-      ],
+      deductions: [{ reason: 'Harsh braking event detected', points: -8 }],
       tips: [
         'Anticipate traffic flow to brake gradually',
         'Start braking earlier when approaching stops',
@@ -98,105 +97,301 @@ const MOCK_ANALYSIS: AnalysisResult = {
     acceleration: {
       score: 80,
       maxScore: 100,
-      deductions: [
-        { reason: 'Hard acceleration from stop', points: -4 },
-      ],
-      tips: [
-        'Accelerate smoothly from stops',
-        'Gradual throttle application saves fuel',
-        'Match the flow of traffic when merging',
-      ],
+      deductions: [{ reason: 'Hard acceleration from stop', points: -4 }],
+      tips: ['Accelerate smoothly from stops', 'Gradual throttle application saves fuel', 'Match the flow of traffic when merging'],
     },
     lane_discipline: {
       score: 85,
       maxScore: 100,
-      deductions: [
-        { reason: 'Lane departure without signal', points: -3 },
-      ],
-      tips: [
-        'Always use turn signals before changing lanes',
-        'Check mirrors and blind spots',
-        'Stay centered in your lane',
-      ],
+      deductions: [{ reason: 'Lane departure without signal', points: -3 }],
+      tips: ['Always use turn signals before changing lanes', 'Check mirrors and blind spots', 'Stay centered in your lane'],
     },
     steering: {
       score: 80,
       maxScore: 100,
-      deductions: [
-        { reason: 'Sharp turn at high speed', points: -4 },
-      ],
-      tips: [
-        'Reduce speed before entering turns',
-        'Use smooth steering inputs',
-        'Look through the turn to where you want to go',
-      ],
+      deductions: [{ reason: 'Sharp turn at high speed', points: -4 }],
+      tips: ['Reduce speed before entering turns', 'Use smooth steering inputs', 'Look through the turn to where you want to go'],
     },
   },
 };
 
-// Simulates file upload and analysis
+// --- POLISHED upload + analyze ---
+// Supports:
+// - real upload progress via XMLHttpRequest when using API_ENDPOINTS.analyze
+// - AbortController cancellation
+// - staged processing progress while waiting
+// - demo fallback (mock) when API not available
+
+type UploadAndAnalyzeOptions = {
+  signal?: AbortSignal;
+  /** Force demo mode even if API exists */
+  demo?: boolean;
+};
+
+/** Small helper */
+function sleep(ms: number) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+function isAbortError(err: unknown) {
+  return err instanceof DOMException && err.name === 'AbortError';
+}
+
+/**
+ * Creates a "staged" progress animation that feels intentional.
+ * Call `stop()` when the real job completes.
+ */
+function startStagedProcessing(onProgress: (p: UploadProgress) => void) {
+  let stopped = false;
+
+  const stages = [
+    { pct: 12, msg: 'Extracting frames…' },
+    { pct: 38, msg: 'Analyzing lane position…' },
+    { pct: 62, msg: 'Detecting driving events…' },
+    { pct: 84, msg: 'Computing score & breakdown…' },
+    { pct: 92, msg: 'Finalizing results…' },
+  ];
+
+  (async () => {
+    let current = 0;
+
+    for (const s of stages) {
+      if (stopped) return;
+
+      while (!stopped && current < s.pct) {
+        current += Math.max(1, Math.round((s.pct - current) * 0.12));
+        onProgress({
+          status: 'processing',
+          progress: current,
+          message: s.msg,
+        });
+        await sleep(250);
+      }
+
+      await sleep(350);
+    }
+
+    while (!stopped && current < 96) {
+      current += 1;
+      onProgress({
+        status: 'processing',
+        progress: current,
+        message: 'Finishing up…',
+      });
+      await sleep(700);
+    }
+  })();
+
+  return {
+    stop() {
+      stopped = true;
+    },
+  };
+}
+
+/**
+ * Real upload using XHR so we can get upload progress events (fetch can’t reliably do that yet).
+ */
+function uploadViaXHR(
+  url: string,
+  file: File,
+  onProgress: (p: UploadProgress) => void,
+  signal?: AbortSignal
+): Promise<any> {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+
+    const form = new FormData();
+    form.append('file', file);
+
+    xhr.open('POST', url);
+
+    xhr.upload.onprogress = (evt) => {
+      if (!evt.lengthComputable) return;
+      const pct = Math.min(100, Math.round((evt.loaded / evt.total) * 100));
+      onProgress({
+        status: 'uploading',
+        progress: pct,
+        message: pct < 100 ? `Uploading video… ${pct}%` : 'Upload complete. Starting analysis…',
+      });
+    };
+
+    xhr.onerror = () => reject(new Error('Network error during upload.'));
+    xhr.onabort = () => reject(new DOMException('Upload aborted', 'AbortError'));
+
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try {
+          resolve(JSON.parse(xhr.responseText));
+        } catch {
+          resolve(xhr.responseText);
+        }
+      } else {
+        reject(new Error(`Upload failed (${xhr.status}).`));
+      }
+    };
+
+    const abortHandler = () => xhr.abort();
+    if (signal) {
+      if (signal.aborted) {
+        xhr.abort();
+        return;
+      }
+      signal.addEventListener('abort', abortHandler, { once: true });
+    }
+
+    xhr.send(form);
+  });
+}
+
 export async function uploadAndAnalyze(
   file: File,
-  onProgress: (progress: UploadProgress) => void
+  onProgress: (progress: UploadProgress) => void,
+  options: UploadAndAnalyzeOptions = {}
 ): Promise<AnalysisResult> {
-    onProgress({
-    status: 'uploading',
-    progress: 0,
-    message: `Uploading video... 0%`,
-  });
+  const { signal, demo } = options;
 
-  const formData = new FormData();
-  formData.append('video', file);
+  if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
 
-  const response = await fetch(API_ENDPOINTS.analyze, {
-    method: 'POST',
-    body: formData,
-  });
+  // DEMO mode
+  if (demo) {
+    onProgress({ status: 'uploading', progress: 0, message: 'Uploading video…' });
+    for (let i = 0; i <= 100; i += 5) {
+      if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+      await sleep(80);
+      onProgress({
+        status: 'uploading',
+        progress: i,
+        message: i < 100 ? `Uploading video… ${i}%` : 'Upload complete. Starting analysis…',
+      });
+    }
 
-  if (!response.ok) {
-    const errorData = await response.json().catch(() => ({ message: 'Unknown upload error' }));
-    throw new Error(errorData.message || 'Failed to upload video');
+    const staged = startStagedProcessing(onProgress);
+    await sleep(2200);
+    staged.stop();
+
+    const result: AnalysisResult = {
+      ...MOCK_ANALYSIS,
+      id: `analysis_${Date.now()}`,
+      videoName: file.name,
+      createdAt: new Date().toISOString(),
+    };
+
+    onProgress({ status: 'complete', progress: 100, message: 'Analysis complete!', analysisId: result.id });
+    return result;
   }
   
   const backgroundResponse = await response.json();
 
 
-  // Simulate processing
-  onProgress({
-    status: 'processing',
-    progress: 100,
-    message: 'AI is analyzing your driving...',
-  });
+  // REAL mode (backend)
+  onProgress({ status: 'uploading', progress: 0, message: 'Uploading video…' });
 
-  await new Promise((resolve) => setTimeout(resolve, 2500));
+  let stagedController: ReturnType<typeof startStagedProcessing> | null = null;
 
-  // Return mock result with dynamic video name
-  const result: AnalysisResult = {
-    ...MOCK_ANALYSIS,
-    id: backgroundResponse.videoId,
-    videoName: file.name,
-    createdAt: new Date().toISOString(),
-  };
+  try {
+    const response = await uploadViaXHR(API_ENDPOINTS.analyze, file, onProgress, signal);
 
-  onProgress({
-    status: 'complete',
-    progress: 100,
-    message: 'Analysis complete!',
-    analysisId: result.id,
-  });
+    if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
 
-  return result;
+    // If backend returns AnalysisResult directly
+    if (response?.score !== undefined && response?.events) {
+      const result = response as AnalysisResult;
+      if (!result.grade) result.grade = getGradeFromScore(result.score);
+      onProgress({ status: 'complete', progress: 100, message: 'Analysis complete!', analysisId: result.id });
+      return result;
+    }
+
+    // If backend returns a job id, poll until complete
+    if (response?.jobId) {
+      const jobId = response.jobId as string;
+
+      stagedController = startStagedProcessing(onProgress);
+
+      while (true) {
+        if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+
+        const statusRes = await fetch(`/api/jobs/${jobId}`, { signal });
+        if (!statusRes.ok) throw new Error('Failed to fetch processing status.');
+        const statusJson = await statusRes.json();
+
+        if (statusJson.status === 'error') {
+          throw new Error(statusJson.message || 'Processing failed.');
+        }
+
+        if (statusJson.status === 'complete') {
+          stagedController.stop();
+
+          const resultRes = await fetch(`/api/analysis/${statusJson.resultId}`, { signal });
+          if (!resultRes.ok) throw new Error('Failed to fetch analysis result.');
+          const result = (await resultRes.json()) as AnalysisResult;
+
+          if (!result.grade) result.grade = getGradeFromScore(result.score);
+
+          onProgress({ status: 'complete', progress: 100, message: 'Analysis complete!', analysisId: result.id });
+          return result;
+        }
+
+        if (typeof statusJson.progress === 'number') {
+          onProgress({
+            status: 'processing',
+            progress: Math.max(10, Math.min(99, Math.round(statusJson.progress))),
+            message: statusJson.message || 'Analyzing…',
+          });
+        }
+
+        await sleep(900);
+      }
+    }
+
+    stagedController?.stop();
+    throw new Error('Unexpected response from server.');
+  } catch (err) {
+    stagedController?.stop();
+    if (isAbortError(err)) throw err;
+    throw err instanceof Error ? err : new Error('Upload failed.');
+  }
+}
+
+// ------------------------------
+// Backend fetch helpers
+// ------------------------------
+
+type FetchOptions = {
+  signal?: AbortSignal;
+};
+
+/** Fetch an analysis from the backend and cache it in localStorage. */
+export async function fetchAnalysis(id: string, options: FetchOptions = {}): Promise<AnalysisResult> {
+  const res = await fetch(API_ENDPOINTS.getAnalysis(id), { signal: options.signal });
+  if (!res.ok) {
+    throw new Error(res.status === 404 ? 'Analysis not found' : 'Failed to load analysis');
+  }
+  const analysis = (await res.json()) as AnalysisResult;
+  if (!analysis.grade) analysis.grade = getGradeFromScore(analysis.score);
+  saveAnalysis(analysis);
+  return analysis;
+}
+
+/** Fetch recent analyses from the backend (optional UI). */
+export async function fetchHistory(options: FetchOptions = {}): Promise<AnalysisResult[]> {
+  const res = await fetch(API_ENDPOINTS.getHistory, { signal: options.signal });
+  if (!res.ok) throw new Error('Failed to load history');
+  const items = (await res.json()) as AnalysisResult[];
+  for (const item of items) {
+    if (!item.grade) item.grade = getGradeFromScore(item.score);
+    saveAnalysis(item);
+  }
+  return items;
 }
 
 // Get analysis by ID (from localStorage cache or mock)
 export function getAnalysis(id: string): AnalysisResult | null {
-  // Check localStorage for cached analysis
   const cached = localStorage.getItem(`analysis_${id}`);
   if (cached) {
     return JSON.parse(cached);
   }
 
-  // Return mock for demo
   if (id === 'demo') {
     return MOCK_ANALYSIS;
   }
@@ -207,8 +402,7 @@ export function getAnalysis(id: string): AnalysisResult | null {
 // Save analysis to localStorage
 export function saveAnalysis(analysis: AnalysisResult): void {
   localStorage.setItem(`analysis_${analysis.id}`, JSON.stringify(analysis));
-  
-  // Also update recent analyses list
+
   const recentIds = getRecentAnalysisIds();
   if (!recentIds.includes(analysis.id)) {
     recentIds.unshift(analysis.id);

@@ -21,6 +21,7 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
   const [playbackRate, setPlaybackRate] = useState(1);
 
   const displayTime = currentTime ?? internalTime;
+  const safeDuration = Math.max(duration, 0.001);
 
   // Sync external time changes
   useEffect(() => {
@@ -38,14 +39,23 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
   }, [onTimeUpdate]);
 
   const togglePlay = useCallback(() => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    const el = videoRef.current;
+    if (!el) return;
+
+    if (isPlaying) {
+      el.pause();
+      setIsPlaying(false);
+      return;
     }
+
+    const p = el.play();
+    // Some browsers block play() without a user gesture; avoid noisy console errors.
+    if (p && typeof (p as Promise<void>).catch === 'function') {
+      (p as Promise<void>).catch(() => {
+        setIsPlaying(false);
+      });
+    }
+    setIsPlaying(true);
   }, [isPlaying]);
 
   const toggleMute = useCallback(() => {
@@ -71,9 +81,9 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
   }, []);
 
   const handleFullscreen = useCallback(() => {
-    if (videoRef.current) {
-      videoRef.current.requestFullscreen();
-    }
+    const el = videoRef.current;
+    if (!el) return;
+    if (el.requestFullscreen) el.requestFullscreen();
   }, []);
 
   const restart = useCallback(() => {
@@ -120,22 +130,23 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
           <div className="relative">
             <Slider
               value={[displayTime]}
-              max={duration}
+              max={safeDuration}
               step={0.1}
               onValueChange={handleSeek}
               className="cursor-pointer"
             />
-            
+
             {/* Event markers */}
             {events.map((event) => {
-              const position = (event.timestamp / duration) * 100;
+              const position = Math.min(100, Math.max(0, (event.timestamp / safeDuration) * 100));
               const config = EVENT_CONFIG[event.type];
               return (
                 <button
                   key={event.id}
-                  className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-2 border-white cursor-pointer hover:scale-150 transition-transform z-10"
+                  className="absolute top-1/2 w-3 h-3 rounded-full border-2 border-white cursor-pointer hover:scale-150 transition-transform z-10"
                   style={{
                     left: `${position}%`,
+                    transform: 'translate(-50%, -50%)',
                     backgroundColor: config.color,
                   }}
                   onClick={() => handleSeek([event.timestamp])}
@@ -157,7 +168,7 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
               >
                 {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
               </Button>
-              
+
               <Button
                 variant="ghost"
                 size="icon"
@@ -190,9 +201,7 @@ export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpd
                     onClick={() => handlePlaybackRate(rate)}
                     className={cn(
                       'px-2 py-1 rounded transition-colors',
-                      playbackRate === rate
-                        ? 'bg-white text-black'
-                        : 'hover:bg-white/20'
+                      playbackRate === rate ? 'bg-white text-black' : 'hover:bg-white/20'
                     )}
                   >
                     {rate}x
