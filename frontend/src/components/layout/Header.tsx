@@ -22,7 +22,7 @@ export function Header() {
               </div>
             </div>
           </div>
-          <span className="text-xl font-bold text-gradient">DriveScore AI</span>
+          <span className="text-xl font-bold text-gradient">Road-Rater AI</span>
         </Link>
 
         <nav className="flex items-center gap-6">

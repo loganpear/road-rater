@@ -12,7 +12,7 @@ export function Footer() {
                 <Shield className="absolute -top-0.5 -right-0.5 h-2 w-2 text-white" />
               </div>
             </div>
-            <span className="font-semibold text-gradient">DriveScore AI</span>
+            <span className="font-semibold text-gradient">Road Rater AI</span>
           </div>
 
           <p className="text-sm text-muted-foreground text-center">
@@ -20,7 +20,7 @@ export function Footer() {
           </p>
 
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} DriveScore AI. All rights reserved.
+            © {new Date().getFullYear()} Road Rater AI. All rights reserved.
           </p>
         </div>
       </div>

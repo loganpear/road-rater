@@ -5,6 +5,12 @@ import { Upload, Play, Zap, Car, Shield, AlertTriangle } from 'lucide-react';
 export function Hero() {
   const navigate = useNavigate();
 
+  const handleHonk = () => {
+    const audio = new Audio('/car-honk.mp3');
+    audio.play();
+  }
+
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Starfield / city lights effect */}
@@ -39,7 +45,7 @@ export function Hero() {
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-16 bg-yellow-400/80 rounded-sm shrink-0 animate-road-line"
+                className="w-2 h-16 bg-primary/80 rounded-sm shrink-0 animate-road-line"
                 style={{ 
                   animationDelay: `${i * 0.15}s`,
                 }}
@@ -48,10 +54,11 @@ export function Hero() {
           </div>
           
           {/* Left lane marking */}
-          <div className="absolute left-[35%] bottom-0 w-1 h-full bg-gradient-to-t from-white/60 to-transparent" />
+          <div className="w-2 h-16 bg-primary/80 rounded-sm shrink-0 animate-road-line shadow-[0_0_12px_hsl(var(--primary)/0.35)]"
+ />
           
           {/* Right lane marking */}
-          <div className="absolute right-[35%] bottom-0 w-1 h-full bg-gradient-to-t from-white/60 to-transparent" />
+          <div className="w-2 h-16 bg-primary/80 rounded-sm shrink-0 animate-road-line shadow-[0_0_12px_hsl(var(--primary)/0.35)]" />
         </div>
       </div>
 
@@ -59,25 +66,25 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden h-[60%]">
         {/* Car 1 - moving up (away) */}
         <div className="absolute left-1/2 -translate-x-1/2 animate-car-up">
-          <div className="relative">
-            <Car className="w-8 h-8 text-red-400" />
+          <div className="relative"  onClick={handleHonk}>
+            <Car className="w-8 h-8 text-red-400" style={{ transform: 'rotate(270deg)' }} />
             <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-1 h-6 bg-red-500/40 blur-sm rounded-full" />
           </div>
         </div>
 
         {/* Car 2 - moving down (towards) */}
         <div className="absolute left-[44%] animate-car-down" style={{ animationDelay: '1.5s' }}>
-          <div className="relative">
-            <Car className="w-7 h-7 text-blue-400 rotate-180" />
+          <div className="relative"  onClick={handleHonk}>
+            <Car className="w-7 h-7 text-blue-400" style={{ transform: 'rotate(90deg)' }}/>
             <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1 w-1 h-6 bg-blue-500/40 blur-sm rounded-full" />
           </div>
         </div>
 
         {/* Car 3 - moving up slower */}
         <div className="absolute left-[56%] animate-car-up-slow" style={{ animationDelay: '3.5s' }}>
-          <div className="relative">
-            <Car className="w-6 h-6 text-emerald-400" />
-          </div>
+            <div className="relative" onClick={handleHonk}>
+            <Car className="w-6 h-6 text-emerald-400" style={{ transform: 'rotate(270deg)' }} />
+            </div>
         </div>
       </div>
 
@@ -129,7 +136,7 @@ export function Hero() {
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in text-white" style={{ animationDelay: '0.1s' }}>
             Drive Safer with{' '}
-            <span className="text-gradient">DriveScore AI</span>
+            <span className="text-gradient"><br/>Road-Rater AI</span>
           </h1>
 
           {/* Tagline */}
