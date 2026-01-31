@@ -139,15 +139,27 @@ export async function uploadAndAnalyze(
   file: File,
   onProgress: (progress: UploadProgress) => void
 ): Promise<AnalysisResult> {
-  // Simulate upload progress
-  for (let i = 0; i <= 100; i += 10) {
-    await new Promise((resolve) => setTimeout(resolve, 200));
     onProgress({
-      status: 'uploading',
-      progress: i,
-      message: `Uploading video... ${i}%`,
-    });
+    status: 'uploading',
+    progress: 0,
+    message: `Uploading video... 0%`,
+  });
+
+  const formData = new FormData();
+  formData.append('video', file);
+
+  const response = await fetch(API_ENDPOINTS.analyze, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({ message: 'Unknown upload error' }));
+    throw new Error(errorData.message || 'Failed to upload video');
   }
+  
+  const backgroundResponse = await response.json();
+
 
   // Simulate processing
   onProgress({
@@ -161,7 +173,7 @@ export async function uploadAndAnalyze(
   // Return mock result with dynamic video name
   const result: AnalysisResult = {
     ...MOCK_ANALYSIS,
-    id: `analysis_${Date.now()}`,
+    id: backgroundResponse.videoId,
     videoName: file.name,
     createdAt: new Date().toISOString(),
   };
