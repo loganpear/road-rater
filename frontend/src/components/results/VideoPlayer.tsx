@@ -1,268 +1,115 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
-import { DrivingEvent, formatDuration, EVENT_CONFIG } from '@/types/analysis';
-import { cn } from '@/lib/utils';
+import { useEffect, useMemo, useRef } from 'react';
+import type { DrivingEvent } from '@/types/analysis';
+import { getEventMeta } from '@/lib/eventMeta';
 
-interface VideoPlayerProps {
+type Props = {
   videoUrl: string;
+  /** Total duration in seconds (used for UI + guards). */
   duration: number;
-  events: DrivingEvent[];
-  currentTime?: number;
+  events?: DrivingEvent[];
+  /** Current playback time (seconds). Used for external seeks (timeline clicks). */
+  currentTime: number;
+  /** Fires as the video plays/scrubs. */
   onTimeUpdate?: (time: number) => void;
-}
+};
 
-export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpdate }: VideoPlayerProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [internalTime, setInternalTime] = useState(0);
-  const [playbackRate, setPlaybackRate] = useState(1);
+/**
+ * Controlled-ish video player:
+ * - the <video> element is the source of truth for playback
+ * - `currentTime` prop is only used to seek when the user clicks timeline/events
+ * - `onTimeUpdate` keeps the parent in sync without causing seek-jitter
+ */
+export function VideoPlayer({ videoUrl, duration, events, currentTime, onTimeUpdate }: Props) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const lastPropSeekRef = useRef<number>(-1);
 
-  // Scrubbing (dragging the timeline thumb) can cause perceived playback jitter
-  // if we continuously seek while dragging. We track scrub state and only seek
-  // on commit.
-  const [isScrubbing, setIsScrubbing] = useState(false);
-  const [scrubTime, setScrubTime] = useState(0);
+  const safeEvents = useMemo(() => events ?? [], [events]);
 
-  // Avoid feedback-loop jitter: the parent updates currentTime from onTimeUpdate,
-  // which can cause us to keep setting video.currentTime on every render.
-  // We only apply external time when it meaningfully differs (i.e., a real seek).
-  const lastAppliedExternalRef = useRef<number | null>(null);
-  const lastReportedTimeRef = useRef<number>(-1);
-
-  const displayTime = currentTime ?? internalTime;
-  const safeDuration = Math.max(duration, 0.001);
-
-  // Sync external time changes
+  // Seek when parent requests a new time (e.g., timeline/event click).
   useEffect(() => {
-    if (currentTime !== undefined && videoRef.current) {
-      const el = videoRef.current;
-      const diff = Math.abs(el.currentTime - currentTime);
+    const v = videoRef.current;
+    if (!v) return;
+    if (!Number.isFinite(currentTime)) return;
 
-      // Ignore tiny diffs (often caused by parent state updates) to prevent stutter.
-      if (diff < 0.05) return;
+    // Clamp to known duration when possible.
+    const next = Math.max(0, duration > 0 ? Math.min(duration, currentTime) : currentTime);
 
-      // If playing, only apply a larger correction to avoid micro-seeks.
-      if (!el.paused && diff < 0.25) return;
+    // Avoid feedback loop: if we already sought to this value, don't re-apply.
+    if (Math.abs(lastPropSeekRef.current - next) < 0.01) return;
 
-      // Also avoid re-applying the exact same external time repeatedly.
-      if (lastAppliedExternalRef.current !== null && Math.abs(lastAppliedExternalRef.current - currentTime) < 0.01) {
-        return;
-      }
-
-      el.currentTime = currentTime;
-      lastAppliedExternalRef.current = currentTime;
-    }
-  }, [currentTime]);
-
-  const handleTimeUpdate = useCallback(() => {
-    if (videoRef.current) {
-      const time = videoRef.current.currentTime;
-
-      // Reduce render pressure by only updating state when time changes enough.
-      // (Video timeupdate can fire frequently.)
-      if (Math.abs(time - lastReportedTimeRef.current) >= 0.05) {
-        lastReportedTimeRef.current = time;
-        setInternalTime(time);
-        onTimeUpdate?.(time);
+    // Only seek if the delta is meaningful; tiny deltas cause visible jitter.
+    if (Math.abs(v.currentTime - next) > 0.35) {
+      lastPropSeekRef.current = next;
+      try {
+        v.currentTime = next;
+        // Autoplay after click feels better; ignore if browser blocks.
+        void v.play().catch(() => {});
+      } catch {
+        // ignore
       }
     }
-  }, [onTimeUpdate]);
+  }, [currentTime, duration, videoUrl]);
 
-  const togglePlay = useCallback(() => {
-    const el = videoRef.current;
-    if (!el) return;
-
-    if (isPlaying) {
-      el.pause();
-      setIsPlaying(false);
-      return;
-    }
-
-    const p = el.play();
-    // Some browsers block play() without a user gesture; avoid noisy console errors.
-    if (p && typeof (p as Promise<void>).catch === 'function') {
-      (p as Promise<void>).catch(() => {
-        setIsPlaying(false);
-      });
-    }
-    setIsPlaying(true);
-  }, [isPlaying]);
-
-  const toggleMute = useCallback(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  }, [isMuted]);
-
-  const handleSeekCommit = useCallback((value: number[]) => {
-    const t = value?.[0] ?? 0;
-    if (videoRef.current) {
-      videoRef.current.currentTime = t;
-      setInternalTime(t);
-      onTimeUpdate?.(t);
-    }
-    setIsScrubbing(false);
-  }, [onTimeUpdate]);
-
-  const handleSeekChange = useCallback((value: number[]) => {
-    const t = value?.[0] ?? 0;
-    setIsScrubbing(true);
-    setScrubTime(t);
-  }, []);
-
-  const handlePlaybackRate = useCallback((rate: number) => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = rate;
-      setPlaybackRate(rate);
-    }
-  }, []);
-
-  const handleFullscreen = useCallback(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    if (el.requestFullscreen) el.requestFullscreen();
-  }, []);
-
-  const restart = useCallback(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      setInternalTime(0);
-      onTimeUpdate?.(0);
-    }
-  }, [onTimeUpdate]);
+  function seekTo(sec: number) {
+    const v = videoRef.current;
+    if (!v) return;
+    const next = Math.max(0, duration > 0 ? Math.min(duration, sec) : sec);
+    lastPropSeekRef.current = next;
+    v.currentTime = next;
+    void v.play().catch(() => {});
+    onTimeUpdate?.(next);
+  }
 
   return (
-    <div className="relative rounded-xl overflow-hidden bg-black group">
-      {/* Video element */}
-      <video
-        ref={videoRef}
-        src={videoUrl}
-        className="w-full aspect-video"
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={() => setIsPlaying(false)}
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-      />
+    <div className="rounded-xl border border-border bg-card/50 overflow-hidden">
+      <div className="p-4 border-b border-border">
+        <h3 className="font-semibold">Video</h3>
+        <p className="text-sm text-muted-foreground">Click an event to jump to it</p>
+      </div>
 
-      {/* Controls overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-        {/* Center play button */}
-        <button
-          onClick={togglePlay}
-          className="absolute inset-0 flex items-center justify-center"
-          aria-label={isPlaying ? 'Pause' : 'Play'}
-        >
-          <div className="p-4 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors">
-            {isPlaying ? (
-              <Pause className="h-8 w-8 text-white" />
-            ) : (
-              <Play className="h-8 w-8 text-white ml-1" />
-            )}
-          </div>
-        </button>
+      <div className="p-4 space-y-3">
+        <video
+          ref={videoRef}
+          className="w-full rounded-lg"
+          controls
+          playsInline
+          preload="metadata"
+          src={videoUrl}
+          onTimeUpdate={(e) => {
+            const t = (e.currentTarget as HTMLVideoElement).currentTime;
+            onTimeUpdate?.(t);
+          }}
+        />
 
-        {/* Bottom controls */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 space-y-3">
-          {/* Progress bar with event markers */}
-          <div className="relative">
-            <Slider
-              value={[isScrubbing ? scrubTime : displayTime]}
-              max={safeDuration}
-              step={0.1}
-              onValueChange={handleSeekChange}
-              onValueCommit={handleSeekCommit}
-              className="cursor-pointer"
-            />
-
-            {/* Event markers */}
-            {events.map((event) => {
-              const position = Math.min(100, Math.max(0, (event.timestamp / safeDuration) * 100));
-              const config = EVENT_CONFIG[event.type];
+        {safeEvents.length > 0 && (
+          <div className="space-y-2">
+            {safeEvents.map((e) => {
+              const meta = getEventMeta(e.type);
               return (
                 <button
-                  key={event.id}
-                  className="absolute top-1/2 w-3 h-3 rounded-full border-2 border-white cursor-pointer hover:scale-150 transition-transform z-10"
-                  style={{
-                    left: `${position}%`,
-                    transform: 'translate(-50%, -50%)',
-                    backgroundColor: config.color,
-                  }}
-                  onClick={() => handleSeekCommit([event.timestamp])}
-                  title={`${config.label} at ${formatDuration(event.timestamp)}`}
-                  aria-label={`Jump to ${config.label} at ${formatDuration(event.timestamp)}`}
-                />
+                  key={e.id}
+                  type="button"
+                  onClick={() => seekTo(e.timestamp)}
+                  className="w-full text-left flex items-center gap-3 p-2 rounded-lg border border-border hover:bg-muted/50 transition"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: meta.color }} />
+                  <div className="text-sm font-medium">{meta.label}</div>
+                  <div className="ml-auto text-sm text-muted-foreground">{formatTimestamp(e.timestamp)}</div>
+                </button>
               );
             })}
           </div>
+        )}
 
-          {/* Control buttons */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:bg-white/20"
-                onClick={togglePlay}
-              >
-                {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:bg-white/20"
-                onClick={restart}
-              >
-                <RotateCcw className="h-4 w-4" />
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:bg-white/20"
-                onClick={toggleMute}
-              >
-                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-              </Button>
-
-              <span className="text-white text-sm ml-2">
-                {formatDuration(displayTime)} / {formatDuration(duration)}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              {/* Playback speed */}
-              <div className="flex items-center gap-1 text-white text-sm">
-                {[0.5, 1, 1.5, 2].map((rate) => (
-                  <button
-                    key={rate}
-                    onClick={() => handlePlaybackRate(rate)}
-                    className={cn(
-                      'px-2 py-1 rounded transition-colors',
-                      playbackRate === rate ? 'bg-white text-black' : 'hover:bg-white/20'
-                    )}
-                  >
-                    {rate}x
-                  </button>
-                ))}
-              </div>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:bg-white/20"
-                onClick={handleFullscreen}
-              >
-                <Maximize className="h-5 w-5" />
-              </Button>
-            </div>
-          </div>
-        </div>
+        {safeEvents.length === 0 && <div className="text-sm text-muted-foreground"></div>}
       </div>
     </div>
   );
+}
+
+function formatTimestamp(seconds: number) {
+  const s = Math.max(0, Math.floor(seconds || 0));
+  const mm = String(Math.floor(s / 60)).padStart(2, '0');
+  const ss = String(s % 60).padStart(2, '0');
+  return `${mm}:${ss}`;
 }

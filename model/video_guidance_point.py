@@ -6,7 +6,7 @@ import onnxruntime as ort
 
 VIDEO_PATH = "inference/videos/test2.mp4"
 OUTPUT_PATH = "inference/output_guidance.mp4"
-MODEL_PATH = "weights/yolop-640-640.onnx"
+MODEL_PATH = "/yolop-640-640.onnx"
 
 INPUT_W, INPUT_H = 640, 640
 

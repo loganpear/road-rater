@@ -1,33 +1,65 @@
-export type EventType = 
+export type CategoryScore = {
+  score: number;
+  maxScore: number;
+  deductions: { reason: string; points: number }[];
+  tips: string[];
+};
+
+export type Severity = 'low' | 'moderate' | 'high';
+
+export type Grade =
+  | 'A' | 'A-'
+  | 'B+' | 'B' | 'B-'
+  | 'C+' | 'C' | 'C-'
+  | 'D+' | 'D' | 'D-'
+  | 'F';
+
+// ✅ includes new backend type "lane_discipline"
+export type EventType =
   | 'tailgating'
   | 'harsh_braking'
   | 'hard_acceleration'
   | 'lane_departure'
+  | 'lane_discipline'
   | 'sharp_turns';
 
-export type Severity = 'low' | 'moderate' | 'high';
-
-export type Grade = 'A' | 'A-' | 'B+' | 'B' | 'B-' | 'C+' | 'C' | 'C-' | 'D+' | 'D' | 'D-' | 'F';
-
-export interface DrivingEvent {
+// ✅ referenced by Analysis/AnalysisResult
+export type DrivingEvent = {
   id: string;
-  type: EventType;
-  timestamp: number; // seconds into video
-  duration: number; // seconds
-  severity: Severity;
-  points: number; // negative deduction
-  description: string;
-}
+  type: EventType | (string & {}); // allows known + future backend types without breaking builds
+  timestamp: number;
+  duration?: number;
+  severity?: Severity;
+  points?: number;
+  description?: string;
+};
 
-export interface CategoryScore {
+// ✅ supports your backend debug payload
+export type AnalysisDebug = {
+  onLineTimestamps?: number[];
+  onLineSegments?: Array<{
+    startTime: number;
+    endTime: number;
+    duration: number;
+    worstClearancePx: number;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+};
+
+export type Analysis = {
+  id: string;
+  videoName: string;
+  videoDuration: number;
+  videoUrl: string;
+  createdAt: string;
   score: number;
-  maxScore: number;
-  deductions: {
-    reason: string;
-    points: number;
-  }[];
-  tips: string[];
-}
+  grade: Grade; // ✅ was string
+  summary: string;
+  events: DrivingEvent[];
+  breakdown: Record<string, CategoryScore>;
+  debug?: AnalysisDebug;
+};
 
 export interface ScoreBreakdown {
   following_distance: CategoryScore;
@@ -48,6 +80,7 @@ export interface AnalysisResult {
   summary: string;
   events: DrivingEvent[];
   breakdown: ScoreBreakdown;
+  debug?: AnalysisDebug; // ✅ add so it matches Analysis shape & backend payload
 }
 
 export interface UploadProgress {
@@ -77,6 +110,12 @@ export const EVENT_CONFIG: Record<EventType, { label: string; icon: string; colo
     label: 'Lane Departure',
     icon: '↗️',
     color: 'hsl(var(--event-lane-departure))',
+  },
+  // ✅ new entry
+  lane_discipline: {
+    label: 'Lane Discipline',
+    icon: '🛣️',
+    color: 'hsl(var(--event-lane-discipline))',
   },
   sharp_turns: {
     label: 'Sharp Turns',

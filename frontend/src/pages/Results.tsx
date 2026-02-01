@@ -137,10 +137,6 @@ const Results = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Button variant="outline" className="hidden sm:flex" disabled>
-                <Download className="mr-2 h-4 w-4" />
-                Download Report
-              </Button>
               <Button onClick={() => navigate('/upload')}>
                 <Upload className="mr-2 h-4 w-4" />
                 New Analysis
@@ -191,7 +187,6 @@ const Results = () => {
                     <VideoPlayer
                       videoUrl={videoUrl}
                       duration={videoDuration}
-                      events={analysis.events}
                       currentTime={currentTime}
                       onTimeUpdate={handleTimeUpdate}
                     />
@@ -202,14 +197,14 @@ const Results = () => {
                     </div>
                   )}
 
-                  {videoDuration > 0 && (
+                  {/*videoDuration > 0 && (
                     <EventTimeline
                       events={analysis.events}
                       duration={videoDuration}
                       currentTime={currentTime}
                       onEventClick={handleEventClick}
                     />
-                  )}
+                  )*/}
                 </>
               )}
             </div>
@@ -223,7 +218,6 @@ const Results = () => {
                 </div>
               </div>
 
-              <ScoreBreakdown breakdown={analysis.breakdown} />
             </div>
           </div>
         </div>

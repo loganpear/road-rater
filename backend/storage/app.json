@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-02-01T00:42:18.918Z",
+  "savedAt": "2026-02-01T04:21:33.680Z",
   "jobs": [
     {
       "id": "job_e8ce91736fc5e864bc5793c593ef7221",
@@ -110,6 +110,391 @@
       "storedPath": "737f663dff9ea849a59871867c0d5512",
       "createdAt": "2026-02-01T00:42:16.044Z",
       "updatedAt": "2026-02-01T00:42:18.664Z"
+    },
+    {
+      "id": "job_9639c6c459893d1878af82ba05d204f0",
+      "status": "error",
+      "progress": 10,
+      "message": "Processing failed",
+      "resultId": "analysis_30a0b3ce51ac400befd884b9bac94ddd",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "ee4aee4131380f0d697e2d3199d93a05",
+      "createdAt": "2026-02-01T02:01:02.896Z",
+      "updatedAt": "2026-02-01T02:01:02.930Z"
+    },
+    {
+      "id": "job_33208708ee6fa0eb77cb51237a972a62",
+      "status": "error",
+      "progress": 10,
+      "message": "Processing failed",
+      "resultId": "analysis_84f9ea8bae95a85275e45af6f6efb96a",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "281d9c467a28b5ca0823d01f708189fd",
+      "createdAt": "2026-02-01T02:02:12.097Z",
+      "updatedAt": "2026-02-01T02:02:12.124Z"
+    },
+    {
+      "id": "job_4638cdf860105795a23e9f25cc5e7136",
+      "status": "error",
+      "progress": 10,
+      "message": "Processing failed",
+      "resultId": "analysis_881181d73707f179e9548cc34f5a34ce",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "37514ec6ecf45be743094ea2d9d8dd56",
+      "createdAt": "2026-02-01T02:04:52.280Z",
+      "updatedAt": "2026-02-01T02:04:52.630Z"
+    },
+    {
+      "id": "job_2df78f40f76b9925dcee5099b0f0b877",
+      "status": "error",
+      "progress": 10,
+      "message": "Processing failed",
+      "resultId": "analysis_df8b891d7b86b857e34d4d349bb135c8",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "3e22446ffce12f62e57032fee86814e3",
+      "createdAt": "2026-02-01T02:05:21.492Z",
+      "updatedAt": "2026-02-01T02:05:21.610Z"
+    },
+    {
+      "id": "job_635cd61720a7c07d60a98c8f172569b0",
+      "status": "error",
+      "progress": 10,
+      "message": "Processing failed",
+      "resultId": "analysis_9c606485aa4afcc52120730118ca64ab",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "76800064c2e208428b3b7662395d8786",
+      "createdAt": "2026-02-01T02:05:56.732Z",
+      "updatedAt": "2026-02-01T02:05:56.888Z"
+    },
+    {
+      "id": "job_0acb25bac5b0818c9e9a2ffff022d50e",
+      "status": "error",
+      "progress": 10,
+      "message": "Processing failed",
+      "resultId": "analysis_087fd849b8cd35cf06e4c99c5d444033",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "9ffbf9158ff90bf7eb8ee8bd15d2d3d0",
+      "createdAt": "2026-02-01T02:07:51.035Z",
+      "updatedAt": "2026-02-01T02:07:51.071Z"
+    },
+    {
+      "id": "job_9fc5aadbc10c3e493e5ff63d60dc2ca5",
+      "status": "error",
+      "progress": 10,
+      "message": "Processing failed",
+      "resultId": "analysis_148d30f3c3ac98d48ab4ac2634c79f4d",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "7cf05b0d7fd7258dbbf47551bb1a0848",
+      "createdAt": "2026-02-01T02:09:35.271Z",
+      "updatedAt": "2026-02-01T02:09:35.286Z"
+    },
+    {
+      "id": "job_c9c8cf629b15eaf5fd28614c6e6e90cf",
+      "status": "error",
+      "progress": 55,
+      "message": "Processing failed",
+      "resultId": "analysis_f6fb8aa3d9190698f6ebffe6baf7eeb1",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "8c5be997459429c8150e2907881e512c",
+      "createdAt": "2026-02-01T02:11:00.184Z",
+      "updatedAt": "2026-02-01T02:11:08.469Z"
+    },
+    {
+      "id": "job_c25c1fe013797fc1b778d0f76024a3f4",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_52ee6f7944178253468b8646000a0326",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "b8c462646e2518694bb131101ce6985c",
+      "createdAt": "2026-02-01T02:15:00.791Z",
+      "updatedAt": "2026-02-01T02:15:54.351Z"
+    },
+    {
+      "id": "job_5aa21d73fb68be53685eb8dfcd7973ef",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_8ca00599368b5cecee4cb88af162acc6",
+      "originalFilename": "videoplayback.mp4",
+      "storedPath": "fd8aeb2295f041059ffbdb30c414b35e",
+      "createdAt": "2026-02-01T02:18:03.182Z",
+      "updatedAt": "2026-02-01T02:19:36.806Z"
+    },
+    {
+      "id": "job_c78806d35f3343a3a7405dacfbb70e44",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_1d6ec8263c71e0edcad36dd39dd423e0",
+      "originalFilename": "Video Project 1.mp4",
+      "storedPath": "a3461825472b5bb69202b9033fdf16f9",
+      "createdAt": "2026-02-01T02:25:56.144Z",
+      "updatedAt": "2026-02-01T02:27:44.023Z"
+    },
+    {
+      "id": "job_76c9fd60c7e4b36e570a7f946448359c",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_8fafe39140b6a21aff1114c0a46b0774",
+      "originalFilename": "videoplayback (1).mp4",
+      "storedPath": "5bded21ca820b1c519d39ac33201f331",
+      "createdAt": "2026-02-01T02:33:59.880Z",
+      "updatedAt": "2026-02-01T02:35:05.538Z"
+    },
+    {
+      "id": "job_2b8457f2476165e1aec3c1264e85ce0e",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_255b8468f3a9a38508e18772b8f519d7",
+      "originalFilename": "Video Project 1.mp4",
+      "storedPath": "ff9a95d5cedfcd06ca80454352c6e38e",
+      "createdAt": "2026-02-01T02:35:20.385Z",
+      "updatedAt": "2026-02-01T02:37:08.040Z"
+    },
+    {
+      "id": "job_e0dbb150355a49edce3edaa9a81fc7a9",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_6edfd12e00672d099621b4648811c8ec",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "432a86ef4a92829394015018f9d0e600",
+      "createdAt": "2026-02-01T02:38:27.885Z",
+      "updatedAt": "2026-02-01T02:40:02.374Z"
+    },
+    {
+      "id": "job_eb0460a10ade2d96617d3bee392d2d35",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_7a18b56736e360961be4671bfa93a99b",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "a13bfd5c29f8c11701d5b2874d74af4b",
+      "createdAt": "2026-02-01T02:41:06.354Z",
+      "updatedAt": "2026-02-01T02:42:18.699Z"
+    },
+    {
+      "id": "job_217f350353d1e1367a1d0d8c95b7d616",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_6f9bd58098d3ca18330b9d0930522e17",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "13fac0d56b85ce371a0dde6dbb625b1d",
+      "createdAt": "2026-02-01T02:47:21.995Z",
+      "updatedAt": "2026-02-01T02:48:57.205Z"
+    },
+    {
+      "id": "job_ee21db278d11a9e71337640c95f617ec",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_c244d353f5bff50f23fac9858f6bcf51",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "976acb7acd85929a300388c3c31ed8d1",
+      "createdAt": "2026-02-01T02:50:14.837Z",
+      "updatedAt": "2026-02-01T02:50:34.645Z"
+    },
+    {
+      "id": "job_738e8a5e6d248205ff6294a30bf83c06",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_06b234be7ae5837a89b34c9c025d1d8d",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "caa0d80c231cc3b8fbde9565ae4dd995",
+      "createdAt": "2026-02-01T02:51:20.088Z",
+      "updatedAt": "2026-02-01T02:52:58.985Z"
+    },
+    {
+      "id": "job_e991c9553bcd58b9288dcc7bace216ed",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_f63dcb057b63567f714f73c59c37bf66",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "979e31eb0577112bac78680d2785cc9f",
+      "createdAt": "2026-02-01T03:08:08.362Z",
+      "updatedAt": "2026-02-01T03:08:51.252Z"
+    },
+    {
+      "id": "job_7f7971dcb4e60e5a24c0c9950695f967",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_62a706291bbca5b3d5a3edfb88b02f8a",
+      "originalFilename": "Video Project 1.mp4",
+      "storedPath": "7170643e7e553bb160c6a54d3343f826",
+      "createdAt": "2026-02-01T03:10:07.819Z",
+      "updatedAt": "2026-02-01T03:11:11.477Z"
+    },
+    {
+      "id": "job_5b81fc10b8d0e1aecb1a48fe8ada52a0",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_3c6c2abce3c2218cdf3505af1fe092dd",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "3807643c28be8b1141c4c14957a7a443",
+      "createdAt": "2026-02-01T03:18:25.432Z",
+      "updatedAt": "2026-02-01T03:19:18.742Z"
+    },
+    {
+      "id": "job_2a8d33a04de002ab2ac19aa16121cab9",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_e7f0426bc6e14e6b94ee4fe2337bdfbc",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "f0aae934202f635099aeb4ada6382eeb",
+      "createdAt": "2026-02-01T03:32:09.312Z",
+      "updatedAt": "2026-02-01T03:33:43.723Z"
+    },
+    {
+      "id": "job_407f46e8ce0189ac3cfbfdb779c2ecaf",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_ae130415ddab794fffe2c0952d7649c9",
+      "originalFilename": "Video Project 1.mp4",
+      "storedPath": "eed5f70b721422ba489ecae85aaeb876",
+      "createdAt": "2026-02-01T03:35:50.546Z",
+      "updatedAt": "2026-02-01T03:37:32.150Z"
+    },
+    {
+      "id": "job_62db13b54866fe0b41107be46667f873",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_0219d48093d0d67c07e680ee782ed1b8",
+      "originalFilename": "Video Project 1.mp4",
+      "storedPath": "2ab97af69bc21d4adfd640248b8e0d62",
+      "createdAt": "2026-02-01T03:41:57.255Z",
+      "updatedAt": "2026-02-01T03:43:40.348Z"
+    },
+    {
+      "id": "job_cf39a1c5da7bf15ba5de68398808eed0",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_628bac8031bc535fc7c577764901cac9",
+      "originalFilename": "Video Project 1.mp4",
+      "storedPath": "3b56ffeb33a5a5d7e43a38f349d39200",
+      "createdAt": "2026-02-01T03:46:35.057Z",
+      "updatedAt": "2026-02-01T03:48:12.185Z"
+    },
+    {
+      "id": "job_b1b845134f6d174f303590ba4f7244f4",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_1b0ccadd5e66f2f5716ea44e1dba4f4d",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "b3c5f2a77420420fda11acfdbf1e20ce",
+      "createdAt": "2026-02-01T03:48:53.850Z",
+      "updatedAt": "2026-02-01T03:50:30.743Z"
+    },
+    {
+      "id": "job_a25928216149daff2b4aecfac0213608",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_c6a3b9962490c932df38783111029acd",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "7f501f2c2d3fef276a5b96a80461012a",
+      "createdAt": "2026-02-01T03:51:02.910Z",
+      "updatedAt": "2026-02-01T03:52:17.594Z"
+    },
+    {
+      "id": "job_ecd5f7489b094e16519cc8a57e5a9c50",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_9f1133a6b584fe4ccda0719921323fb8",
+      "originalFilename": "videoplayback.mp4",
+      "storedPath": "7330d403a673f13b7621e8f0d34c4ff7",
+      "createdAt": "2026-02-01T03:52:46.175Z",
+      "updatedAt": "2026-02-01T03:53:22.099Z"
+    },
+    {
+      "id": "job_df48e4bf7eb24ccfca535ebdf6089f19",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_b8d1613d4c07bd9cdd9e5eea622fde56",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "05b217b7eee94d47b22725708df4edec",
+      "createdAt": "2026-02-01T03:55:06.880Z",
+      "updatedAt": "2026-02-01T03:56:42.200Z"
+    },
+    {
+      "id": "job_fa6d68c791460a99aa7e3a83def7ad69",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_adee24f7d53372d953bcaa23e6e246a5",
+      "originalFilename": "videoplayback (2).mp4",
+      "storedPath": "abf0a4cdee45982eae172fcd7db84df3",
+      "createdAt": "2026-02-01T03:59:47.424Z",
+      "updatedAt": "2026-02-01T04:01:23.279Z"
+    },
+    {
+      "id": "job_fcbe2e058c3af782afd42cbbd0b6c028",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_a73d444be0d33b15be090a0dcbcf2ef4",
+      "originalFilename": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "storedPath": "6eae9f4fee4ca3e810cc56c87bfc96f6",
+      "createdAt": "2026-02-01T04:01:54.508Z",
+      "updatedAt": "2026-02-01T04:03:02.220Z"
+    },
+    {
+      "id": "job_2ccff659dd3464fce994fc524faeabdd",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_06b63bf41071ae40b2b8fb7bff138d68",
+      "originalFilename": "Video Project 1.mp4",
+      "storedPath": "b3933518cc8dc56524e3af24e73ec0fe",
+      "createdAt": "2026-02-01T04:03:03.187Z",
+      "updatedAt": "2026-02-01T04:04:48.415Z"
+    },
+    {
+      "id": "job_4f7dd190b97b88fb67665e71a1dafd2a",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_2875367fa1a0580f21b1b2c5e55db353",
+      "originalFilename": "videoplayback (3).mp4",
+      "storedPath": "ba134b7e48371f27f523e53e208b9599",
+      "createdAt": "2026-02-01T04:08:27.170Z",
+      "updatedAt": "2026-02-01T04:10:04.953Z"
+    },
+    {
+      "id": "job_c5dabd7ceac7e1ef056753c5d7d73129",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_d1c26bd5cf1d2f31f44a85f9e58a247e",
+      "originalFilename": "videoplayback (3).mp4",
+      "storedPath": "d4332b58e64dec42026868afbb176362",
+      "createdAt": "2026-02-01T04:11:22.890Z",
+      "updatedAt": "2026-02-01T04:13:01.208Z"
+    },
+    {
+      "id": "job_a37894fca1ce926b6c4c324955358112",
+      "status": "complete",
+      "progress": 100,
+      "message": "Complete",
+      "resultId": "analysis_16b702edcf8da2cb839d1b611d893a48",
+      "originalFilename": "Video Project 3.mp4",
+      "storedPath": "29fd6c4822850475e9ba007318120458",
+      "createdAt": "2026-02-01T04:21:00.301Z",
+      "updatedAt": "2026-02-01T04:21:33.420Z"
     }
   ],
   "analyses": [
@@ -1221,6 +1606,2266 @@
             "Look where you want to go"
           ]
         }
+      }
+    },
+    {
+      "id": "analysis_52ee6f7944178253468b8646000a0326",
+      "videoName": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/b8c462646e2518694bb131101ce6985c",
+      "createdAt": "2026-02-01T02:15:54.351Z",
+      "score": 50,
+      "grade": "F",
+      "summary": "Lane lines were not detected reliably in the sampled frames.",
+      "events": [],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 50,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "No-lane frames (42)",
+              "points": -20
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_8ca00599368b5cecee4cb88af162acc6",
+      "videoName": "videoplayback.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/fd8aeb2295f041059ffbdb30c414b35e",
+      "createdAt": "2026-02-01T02:19:36.806Z",
+      "score": 78,
+      "grade": "C",
+      "summary": "Lane guidance analysis complete. On-line frames: 0/16.",
+      "events": [],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 100,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "No-lane frames (44)",
+              "points": -15
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_1d6ec8263c71e0edcad36dd39dd423e0",
+      "videoName": "Video Project 1.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/a3461825472b5bb69202b9033fdf16f9",
+      "createdAt": "2026-02-01T02:27:44.023Z",
+      "score": 92,
+      "grade": "A",
+      "summary": "Lane guidance analysis complete. On-line frames: 5/55.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 6,
+          "duration": 1,
+          "severity": "high",
+          "points": -1,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 93,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (5)",
+              "points": -2
+            },
+            {
+              "reason": "No-lane frames (5)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_8fafe39140b6a21aff1114c0a46b0774",
+      "videoName": "videoplayback (1).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/5bded21ca820b1c519d39ac33201f331",
+      "createdAt": "2026-02-01T02:35:05.538Z",
+      "score": 100,
+      "grade": "A",
+      "summary": "Lane guidance analysis complete. On-line frames: 0/60.",
+      "events": [],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 100,
+          "maxScore": 100,
+          "deductions": [],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_255b8468f3a9a38508e18772b8f519d7",
+      "videoName": "Video Project 1.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/ff9a95d5cedfcd06ca80454352c6e38e",
+      "createdAt": "2026-02-01T02:37:08.040Z",
+      "score": 92,
+      "grade": "A",
+      "summary": "Lane guidance analysis complete. On-line frames: 5/55.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 6,
+          "duration": 1,
+          "severity": "high",
+          "points": -1,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 93,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (5)",
+              "points": -2
+            },
+            {
+              "reason": "No-lane frames (5)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_6edfd12e00672d099621b4648811c8ec",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/432a86ef4a92829394015018f9d0e600",
+      "createdAt": "2026-02-01T02:40:02.374Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 12,
+          "duration": 1,
+          "severity": "high",
+          "points": -4,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_7a18b56736e360961be4671bfa93a99b",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/a13bfd5c29f8c11701d5b2874d74af4b",
+      "createdAt": "2026-02-01T02:42:18.699Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 12,
+          "duration": 1,
+          "severity": "high",
+          "points": -4,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_6f9bd58098d3ca18330b9d0930522e17",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/13fac0d56b85ce371a0dde6dbb625b1d",
+      "createdAt": "2026-02-01T02:48:57.205Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 12,
+          "duration": 1,
+          "severity": "high",
+          "points": -4,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_c244d353f5bff50f23fac9858f6bcf51",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/976acb7acd85929a300388c3c31ed8d1",
+      "createdAt": "2026-02-01T02:50:34.645Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 12,
+          "duration": 1,
+          "severity": "high",
+          "points": -4,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_06b234be7ae5837a89b34c9c025d1d8d",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/caa0d80c231cc3b8fbde9565ae4dd995",
+      "createdAt": "2026-02-01T02:52:58.984Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 12,
+          "duration": 1,
+          "severity": "high",
+          "points": -4,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_f63dcb057b63567f714f73c59c37bf66",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/979e31eb0577112bac78680d2785cc9f",
+      "createdAt": "2026-02-01T03:08:51.252Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 12,
+          "duration": 1,
+          "severity": "high",
+          "points": -4,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_62a706291bbca5b3d5a3edfb88b02f8a",
+      "videoName": "Video Project 1.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/7170643e7e553bb160c6a54d3343f826",
+      "createdAt": "2026-02-01T03:11:11.476Z",
+      "score": 92,
+      "grade": "A",
+      "summary": "Lane guidance analysis complete. On-line frames: 5/55.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 6,
+          "duration": 1,
+          "severity": "high",
+          "points": -1,
+          "description": "Vehicle too close to lane line. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 93,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (5)",
+              "points": -2
+            },
+            {
+              "reason": "No-lane frames (5)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "analysis_3c6c2abce3c2218cdf3505af1fe092dd",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/3807643c28be8b1141c4c14957a7a443",
+      "createdAt": "2026-02-01T03:19:18.742Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10. Worst at ~12s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 2,
+          "severity": "high",
+          "points": -4,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 3,
+        "onLineFrames": [
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 17
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 2
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 0
+          }
+        ],
+        "onLineTimestamps": [
+          11,
+          11.5,
+          12
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 22,
+            "endFrame": 24,
+            "startTime": 11,
+            "endTime": 12,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_e7f0426bc6e14e6b94ee4fe2337bdfbc",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/f0aae934202f635099aeb4ada6382eeb",
+      "createdAt": "2026-02-01T03:33:43.723Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10. Worst at ~12s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 2,
+          "severity": "high",
+          "points": -4,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 3,
+        "onLineFrames": [
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 17
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 2
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 0
+          }
+        ],
+        "onLineTimestamps": [
+          11,
+          11.5,
+          12
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 22,
+            "endFrame": 24,
+            "startTime": 11,
+            "endTime": 12,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_ae130415ddab794fffe2c0952d7649c9",
+      "videoName": "Video Project 1.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/eed5f70b721422ba489ecae85aaeb876",
+      "createdAt": "2026-02-01T03:37:32.150Z",
+      "score": 92,
+      "grade": "A",
+      "summary": "Lane guidance analysis complete. On-line frames: 5/55. Worst at ~6s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 5,
+          "duration": 2,
+          "severity": "high",
+          "points": -1,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        },
+        {
+          "id": "evt_lane_2",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 1,
+          "severity": "high",
+          "points": -1,
+          "description": "Lane line contact/veer. Worst clearance ≈ 21px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 93,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (5)",
+              "points": -2
+            },
+            {
+              "reason": "No-lane frames (5)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 5,
+        "onLineFrames": [
+          {
+            "frameIdx": 11,
+            "timestampSec": 5.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 12,
+            "timestampSec": 6,
+            "clearancePx": 3
+          },
+          {
+            "frameIdx": 13,
+            "timestampSec": 6.5,
+            "clearancePx": 6
+          },
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 21
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 27
+          }
+        ],
+        "onLineTimestamps": [
+          5.5,
+          6,
+          6.5,
+          11,
+          11.5
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 11,
+            "endFrame": 13,
+            "startTime": 5.5,
+            "endTime": 6.5,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          },
+          {
+            "startFrame": 22,
+            "endFrame": 23,
+            "startTime": 11,
+            "endTime": 11.5,
+            "duration": 1,
+            "worstClearancePx": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_0219d48093d0d67c07e680ee782ed1b8",
+      "videoName": "Video Project 1.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/2ab97af69bc21d4adfd640248b8e0d62",
+      "createdAt": "2026-02-01T03:43:40.348Z",
+      "score": 92,
+      "grade": "A",
+      "summary": "Lane guidance analysis complete. On-line frames: 5/55. Worst at ~6s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 5,
+          "duration": 2,
+          "severity": "high",
+          "points": -1,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        },
+        {
+          "id": "evt_lane_2",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 1,
+          "severity": "high",
+          "points": -1,
+          "description": "Lane line contact/veer. Worst clearance ≈ 21px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 93,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (5)",
+              "points": -2
+            },
+            {
+              "reason": "No-lane frames (5)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 5,
+        "onLineFrames": [
+          {
+            "frameIdx": 11,
+            "timestampSec": 5.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 12,
+            "timestampSec": 6,
+            "clearancePx": 3
+          },
+          {
+            "frameIdx": 13,
+            "timestampSec": 6.5,
+            "clearancePx": 6
+          },
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 21
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 27
+          }
+        ],
+        "onLineTimestamps": [
+          5.5,
+          6,
+          6.5,
+          11,
+          11.5
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 11,
+            "endFrame": 13,
+            "startTime": 5.5,
+            "endTime": 6.5,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          },
+          {
+            "startFrame": 22,
+            "endFrame": 23,
+            "startTime": 11,
+            "endTime": 11.5,
+            "duration": 1,
+            "worstClearancePx": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_628bac8031bc535fc7c577764901cac9",
+      "videoName": "Video Project 1.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/3b56ffeb33a5a5d7e43a38f349d39200",
+      "createdAt": "2026-02-01T03:48:12.185Z",
+      "score": 92,
+      "grade": "A",
+      "summary": "Lane guidance analysis complete. On-line frames: 5/55. Worst at ~6s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 5,
+          "duration": 2,
+          "severity": "high",
+          "points": -1,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        },
+        {
+          "id": "evt_lane_2",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 1,
+          "severity": "high",
+          "points": -1,
+          "description": "Lane line contact/veer. Worst clearance ≈ 21px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 93,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (5)",
+              "points": -2
+            },
+            {
+              "reason": "No-lane frames (5)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 5,
+        "onLineFrames": [
+          {
+            "frameIdx": 11,
+            "timestampSec": 5.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 12,
+            "timestampSec": 6,
+            "clearancePx": 3
+          },
+          {
+            "frameIdx": 13,
+            "timestampSec": 6.5,
+            "clearancePx": 6
+          },
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 21
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 27
+          }
+        ],
+        "onLineTimestamps": [
+          5.5,
+          6,
+          6.5,
+          11,
+          11.5
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 11,
+            "endFrame": 13,
+            "startTime": 5.5,
+            "endTime": 6.5,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          },
+          {
+            "startFrame": 22,
+            "endFrame": 23,
+            "startTime": 11,
+            "endTime": 11.5,
+            "duration": 1,
+            "worstClearancePx": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_1b0ccadd5e66f2f5716ea44e1dba4f4d",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/b3c5f2a77420420fda11acfdbf1e20ce",
+      "createdAt": "2026-02-01T03:50:30.743Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10. Worst at ~12s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 2,
+          "severity": "high",
+          "points": -4,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 3,
+        "onLineFrames": [
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 17
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 2
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 0
+          }
+        ],
+        "onLineTimestamps": [
+          11,
+          11.5,
+          12
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 22,
+            "endFrame": 24,
+            "startTime": 11,
+            "endTime": 12,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_c6a3b9962490c932df38783111029acd",
+      "videoName": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/7f501f2c2d3fef276a5b96a80461012a",
+      "createdAt": "2026-02-01T03:52:17.594Z",
+      "score": 50,
+      "grade": "F",
+      "summary": "Lane lines were not detected reliably in the sampled frames.",
+      "events": [],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 50,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "No-lane frames (42)",
+              "points": -20
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 0,
+        "onLineFrames": [],
+        "onLineTimestamps": [],
+        "onLineSegments": []
+      }
+    },
+    {
+      "id": "analysis_9f1133a6b584fe4ccda0719921323fb8",
+      "videoName": "videoplayback.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/7330d403a673f13b7621e8f0d34c4ff7",
+      "createdAt": "2026-02-01T03:53:22.099Z",
+      "score": 78,
+      "grade": "C",
+      "summary": "Lane guidance analysis complete. On-line frames: 0/16. Worst at ~15s.",
+      "events": [],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 100,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "No-lane frames (44)",
+              "points": -15
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 0,
+        "onLineFrames": [],
+        "onLineTimestamps": [],
+        "onLineSegments": []
+      }
+    },
+    {
+      "id": "analysis_b8d1613d4c07bd9cdd9e5eea622fde56",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/05b217b7eee94d47b22725708df4edec",
+      "createdAt": "2026-02-01T03:56:42.200Z",
+      "score": 57,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 3/10. Worst at ~11s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 2,
+          "severity": "high",
+          "points": -4,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 76,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (3)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (50)",
+              "points": -17
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 3,
+        "onLineFrames": [
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 0
+          }
+        ],
+        "onLineTimestamps": [
+          11,
+          11.5,
+          12
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 22,
+            "endFrame": 24,
+            "startTime": 11,
+            "endTime": 12,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_adee24f7d53372d953bcaa23e6e246a5",
+      "videoName": "videoplayback (2).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/abf0a4cdee45982eae172fcd7db84df3",
+      "createdAt": "2026-02-01T04:01:23.279Z",
+      "score": 48,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 5/11. Worst at ~11s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 2,
+          "severity": "high",
+          "points": -5,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        },
+        {
+          "id": "evt_lane_2",
+          "type": "lane_discipline",
+          "timestamp": 24,
+          "duration": 1,
+          "severity": "high",
+          "points": -5,
+          "description": "Lane line contact/veer. Worst clearance ≈ 58px"
+        },
+        {
+          "id": "evt_lane_3",
+          "type": "lane_discipline",
+          "timestamp": 27,
+          "duration": 1,
+          "severity": "high",
+          "points": -5,
+          "description": "Lane line contact/veer. Worst clearance ≈ 74px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 64,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (5)",
+              "points": -9
+            },
+            {
+              "reason": "No-lane frames (49)",
+              "points": -16
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 5,
+        "onLineFrames": [
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 49,
+            "timestampSec": 24.5,
+            "clearancePx": 58
+          },
+          {
+            "frameIdx": 54,
+            "timestampSec": 27,
+            "clearancePx": 74
+          }
+        ],
+        "onLineTimestamps": [
+          11,
+          11.5,
+          12,
+          24.5,
+          27
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 22,
+            "endFrame": 24,
+            "startTime": 11,
+            "endTime": 12,
+            "duration": 1.5,
+            "worstClearancePx": 0
+          },
+          {
+            "startFrame": 49,
+            "endFrame": 49,
+            "startTime": 24.5,
+            "endTime": 24.5,
+            "duration": 0.5,
+            "worstClearancePx": 58
+          },
+          {
+            "startFrame": 54,
+            "endFrame": 54,
+            "startTime": 27,
+            "endTime": 27,
+            "duration": 0.5,
+            "worstClearancePx": 74
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_a73d444be0d33b15be090a0dcbcf2ef4",
+      "videoName": "87fdadd3-5cbf-4ea6-b392-5c89e8099e6c.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/6eae9f4fee4ca3e810cc56c87bfc96f6",
+      "createdAt": "2026-02-01T04:03:02.220Z",
+      "score": 50,
+      "grade": "F",
+      "summary": "Lane lines were not detected reliably in the sampled frames.",
+      "events": [],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 50,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "No-lane frames (42)",
+              "points": -20
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 0,
+        "onLineFrames": [],
+        "onLineTimestamps": [],
+        "onLineSegments": []
+      }
+    },
+    {
+      "id": "analysis_06b63bf41071ae40b2b8fb7bff138d68",
+      "videoName": "Video Project 1.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/b3933518cc8dc56524e3af24e73ec0fe",
+      "createdAt": "2026-02-01T04:04:48.415Z",
+      "score": 82,
+      "grade": "B",
+      "summary": "Lane guidance analysis complete. On-line frames: 17/59. Worst at ~6s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 2,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 36px"
+        },
+        {
+          "id": "evt_lane_2",
+          "type": "lane_discipline",
+          "timestamp": 3,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 30px"
+        },
+        {
+          "id": "evt_lane_3",
+          "type": "lane_discipline",
+          "timestamp": 5,
+          "duration": 2,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        },
+        {
+          "id": "evt_lane_4",
+          "type": "lane_discipline",
+          "timestamp": 10,
+          "duration": 2,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 15px"
+        },
+        {
+          "id": "evt_lane_5",
+          "type": "lane_discipline",
+          "timestamp": 13,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 69px"
+        },
+        {
+          "id": "evt_lane_6",
+          "type": "lane_discipline",
+          "timestamp": 22,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 60px"
+        },
+        {
+          "id": "evt_lane_7",
+          "type": "lane_discipline",
+          "timestamp": 27,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 72px"
+        },
+        {
+          "id": "evt_lane_8",
+          "type": "lane_discipline",
+          "timestamp": 28,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 72px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 77,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (17)",
+              "points": -6
+            },
+            {
+              "reason": "No-lane frames (1)",
+              "points": 0
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 17,
+        "onLineFrames": [
+          {
+            "frameIdx": 4,
+            "timestampSec": 2,
+            "clearancePx": 36
+          },
+          {
+            "frameIdx": 5,
+            "timestampSec": 2.5,
+            "clearancePx": 69
+          },
+          {
+            "frameIdx": 7,
+            "timestampSec": 3.5,
+            "clearancePx": 75
+          },
+          {
+            "frameIdx": 8,
+            "timestampSec": 4,
+            "clearancePx": 30
+          },
+          {
+            "frameIdx": 11,
+            "timestampSec": 5.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 12,
+            "timestampSec": 6,
+            "clearancePx": 3
+          },
+          {
+            "frameIdx": 13,
+            "timestampSec": 6.5,
+            "clearancePx": 3
+          },
+          {
+            "frameIdx": 14,
+            "timestampSec": 7,
+            "clearancePx": 33
+          },
+          {
+            "frameIdx": 21,
+            "timestampSec": 10.5,
+            "clearancePx": 33
+          },
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 15
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 24
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 27
+          },
+          {
+            "frameIdx": 27,
+            "timestampSec": 13.5,
+            "clearancePx": 69
+          },
+          {
+            "frameIdx": 45,
+            "timestampSec": 22.5,
+            "clearancePx": 60
+          },
+          {
+            "frameIdx": 46,
+            "timestampSec": 23,
+            "clearancePx": 72
+          },
+          {
+            "frameIdx": 55,
+            "timestampSec": 27.5,
+            "clearancePx": 72
+          },
+          {
+            "frameIdx": 57,
+            "timestampSec": 28.5,
+            "clearancePx": 72
+          }
+        ],
+        "onLineTimestamps": [
+          2,
+          2.5,
+          3.5,
+          4,
+          5.5,
+          6,
+          6.5,
+          7,
+          10.5,
+          11,
+          11.5,
+          12,
+          13.5,
+          22.5,
+          23,
+          27.5,
+          28.5
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 4,
+            "endFrame": 5,
+            "startTime": 2,
+            "endTime": 2.5,
+            "duration": 1,
+            "worstClearancePx": 36
+          },
+          {
+            "startFrame": 7,
+            "endFrame": 8,
+            "startTime": 3.5,
+            "endTime": 4,
+            "duration": 1,
+            "worstClearancePx": 30
+          },
+          {
+            "startFrame": 11,
+            "endFrame": 14,
+            "startTime": 5.5,
+            "endTime": 7,
+            "duration": 2,
+            "worstClearancePx": 0
+          },
+          {
+            "startFrame": 21,
+            "endFrame": 24,
+            "startTime": 10.5,
+            "endTime": 12,
+            "duration": 2,
+            "worstClearancePx": 15
+          },
+          {
+            "startFrame": 27,
+            "endFrame": 27,
+            "startTime": 13.5,
+            "endTime": 13.5,
+            "duration": 0.5,
+            "worstClearancePx": 69
+          },
+          {
+            "startFrame": 45,
+            "endFrame": 46,
+            "startTime": 22.5,
+            "endTime": 23,
+            "duration": 1,
+            "worstClearancePx": 60
+          },
+          {
+            "startFrame": 55,
+            "endFrame": 55,
+            "startTime": 27.5,
+            "endTime": 27.5,
+            "duration": 0.5,
+            "worstClearancePx": 72
+          },
+          {
+            "startFrame": 57,
+            "endFrame": 57,
+            "startTime": 28.5,
+            "endTime": 28.5,
+            "duration": 0.5,
+            "worstClearancePx": 72
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_2875367fa1a0580f21b1b2c5e55db353",
+      "videoName": "videoplayback (3).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/ba134b7e48371f27f523e53e208b9599",
+      "createdAt": "2026-02-01T04:10:04.953Z",
+      "score": 46,
+      "grade": "F",
+      "summary": "Lane guidance analysis complete. On-line frames: 46/54. Worst at ~6s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 4,
+          "duration": 1,
+          "severity": "high",
+          "points": -10,
+          "description": "Lane line contact/veer. Worst clearance ≈ 44px"
+        },
+        {
+          "id": "evt_lane_2",
+          "type": "lane_discipline",
+          "timestamp": 5,
+          "duration": 14,
+          "severity": "high",
+          "points": -10,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        },
+        {
+          "id": "evt_lane_3",
+          "type": "lane_discipline",
+          "timestamp": 19,
+          "duration": 9,
+          "severity": "high",
+          "points": -10,
+          "description": "Lane line contact/veer. Worst clearance ≈ 0px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 32,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (46)",
+              "points": -17
+            },
+            {
+              "reason": "No-lane frames (6)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 46,
+        "onLineFrames": [
+          {
+            "frameIdx": 9,
+            "timestampSec": 4.5,
+            "clearancePx": 44
+          },
+          {
+            "frameIdx": 11,
+            "timestampSec": 5.5,
+            "clearancePx": 5
+          },
+          {
+            "frameIdx": 12,
+            "timestampSec": 6,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 13,
+            "timestampSec": 6.5,
+            "clearancePx": 27
+          },
+          {
+            "frameIdx": 14,
+            "timestampSec": 7,
+            "clearancePx": 42
+          },
+          {
+            "frameIdx": 15,
+            "timestampSec": 7.5,
+            "clearancePx": 72
+          },
+          {
+            "frameIdx": 16,
+            "timestampSec": 8,
+            "clearancePx": 36
+          },
+          {
+            "frameIdx": 17,
+            "timestampSec": 8.5,
+            "clearancePx": 3
+          },
+          {
+            "frameIdx": 18,
+            "timestampSec": 9,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 19,
+            "timestampSec": 9.5,
+            "clearancePx": 7
+          },
+          {
+            "frameIdx": 20,
+            "timestampSec": 10,
+            "clearancePx": 46
+          },
+          {
+            "frameIdx": 21,
+            "timestampSec": 10.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 23,
+            "timestampSec": 11.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 25,
+            "timestampSec": 12.5,
+            "clearancePx": 61
+          },
+          {
+            "frameIdx": 26,
+            "timestampSec": 13,
+            "clearancePx": 59
+          },
+          {
+            "frameIdx": 27,
+            "timestampSec": 13.5,
+            "clearancePx": 68
+          },
+          {
+            "frameIdx": 28,
+            "timestampSec": 14,
+            "clearancePx": 23
+          },
+          {
+            "frameIdx": 29,
+            "timestampSec": 14.5,
+            "clearancePx": 17
+          },
+          {
+            "frameIdx": 30,
+            "timestampSec": 15,
+            "clearancePx": 13
+          },
+          {
+            "frameIdx": 31,
+            "timestampSec": 15.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 32,
+            "timestampSec": 16,
+            "clearancePx": 34
+          },
+          {
+            "frameIdx": 33,
+            "timestampSec": 16.5,
+            "clearancePx": 36
+          },
+          {
+            "frameIdx": 34,
+            "timestampSec": 17,
+            "clearancePx": 15
+          },
+          {
+            "frameIdx": 35,
+            "timestampSec": 17.5,
+            "clearancePx": 60
+          },
+          {
+            "frameIdx": 36,
+            "timestampSec": 18,
+            "clearancePx": 36
+          },
+          {
+            "frameIdx": 37,
+            "timestampSec": 18.5,
+            "clearancePx": 1
+          },
+          {
+            "frameIdx": 39,
+            "timestampSec": 19.5,
+            "clearancePx": 2
+          },
+          {
+            "frameIdx": 40,
+            "timestampSec": 20,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 41,
+            "timestampSec": 20.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 42,
+            "timestampSec": 21,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 43,
+            "timestampSec": 21.5,
+            "clearancePx": 1
+          },
+          {
+            "frameIdx": 44,
+            "timestampSec": 22,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 45,
+            "timestampSec": 22.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 46,
+            "timestampSec": 23,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 47,
+            "timestampSec": 23.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 48,
+            "timestampSec": 24,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 49,
+            "timestampSec": 24.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 50,
+            "timestampSec": 25,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 51,
+            "timestampSec": 25.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 52,
+            "timestampSec": 26,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 53,
+            "timestampSec": 26.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 54,
+            "timestampSec": 27,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 55,
+            "timestampSec": 27.5,
+            "clearancePx": 0
+          },
+          {
+            "frameIdx": 56,
+            "timestampSec": 28,
+            "clearancePx": 0
+          }
+        ],
+        "onLineTimestamps": [
+          4.5,
+          5.5,
+          6,
+          6.5,
+          7,
+          7.5,
+          8,
+          8.5,
+          9,
+          9.5,
+          10,
+          10.5,
+          11,
+          11.5,
+          12,
+          12.5,
+          13,
+          13.5,
+          14,
+          14.5,
+          15,
+          15.5,
+          16,
+          16.5,
+          17,
+          17.5,
+          18,
+          18.5,
+          19.5,
+          20,
+          20.5,
+          21,
+          21.5,
+          22,
+          22.5,
+          23,
+          23.5,
+          24,
+          24.5,
+          25,
+          25.5,
+          26,
+          26.5,
+          27,
+          27.5,
+          28
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 9,
+            "endFrame": 9,
+            "startTime": 4.5,
+            "endTime": 4.5,
+            "duration": 0.5,
+            "worstClearancePx": 44
+          },
+          {
+            "startFrame": 11,
+            "endFrame": 37,
+            "startTime": 5.5,
+            "endTime": 18.5,
+            "duration": 13.5,
+            "worstClearancePx": 0
+          },
+          {
+            "startFrame": 39,
+            "endFrame": 56,
+            "startTime": 19.5,
+            "endTime": 28,
+            "duration": 9,
+            "worstClearancePx": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_d1c26bd5cf1d2f31f44a85f9e58a247e",
+      "videoName": "videoplayback (3).mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/d4332b58e64dec42026868afbb176362",
+      "createdAt": "2026-02-01T04:13:01.208Z",
+      "score": 81,
+      "grade": "B",
+      "summary": "Lane guidance analysis complete. On-line frames: 14/53. Worst at ~23s.",
+      "events": [
+        {
+          "id": "evt_lane_1",
+          "type": "lane_discipline",
+          "timestamp": 11,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 39px"
+        },
+        {
+          "id": "evt_lane_2",
+          "type": "lane_discipline",
+          "timestamp": 12,
+          "duration": 1,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 42px"
+        },
+        {
+          "id": "evt_lane_3",
+          "type": "lane_discipline",
+          "timestamp": 22,
+          "duration": 2,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 10px"
+        },
+        {
+          "id": "evt_lane_4",
+          "type": "lane_discipline",
+          "timestamp": 24,
+          "duration": 5,
+          "severity": "high",
+          "points": -3,
+          "description": "Lane line contact/veer. Worst clearance ≈ 22px"
+        }
+      ],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 79,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "On-line detections (14)",
+              "points": -5
+            },
+            {
+              "reason": "No-lane frames (7)",
+              "points": -2
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 14,
+        "onLineFrames": [
+          {
+            "frameIdx": 22,
+            "timestampSec": 11,
+            "clearancePx": 39
+          },
+          {
+            "frameIdx": 24,
+            "timestampSec": 12,
+            "clearancePx": 42
+          },
+          {
+            "frameIdx": 44,
+            "timestampSec": 22,
+            "clearancePx": 42
+          },
+          {
+            "frameIdx": 45,
+            "timestampSec": 22.5,
+            "clearancePx": 20
+          },
+          {
+            "frameIdx": 46,
+            "timestampSec": 23,
+            "clearancePx": 10
+          },
+          {
+            "frameIdx": 48,
+            "timestampSec": 24,
+            "clearancePx": 22
+          },
+          {
+            "frameIdx": 49,
+            "timestampSec": 24.5,
+            "clearancePx": 26
+          },
+          {
+            "frameIdx": 50,
+            "timestampSec": 25,
+            "clearancePx": 29
+          },
+          {
+            "frameIdx": 51,
+            "timestampSec": 25.5,
+            "clearancePx": 36
+          },
+          {
+            "frameIdx": 52,
+            "timestampSec": 26,
+            "clearancePx": 41
+          },
+          {
+            "frameIdx": 53,
+            "timestampSec": 26.5,
+            "clearancePx": 33
+          },
+          {
+            "frameIdx": 54,
+            "timestampSec": 27,
+            "clearancePx": 33
+          },
+          {
+            "frameIdx": 55,
+            "timestampSec": 27.5,
+            "clearancePx": 44
+          },
+          {
+            "frameIdx": 56,
+            "timestampSec": 28,
+            "clearancePx": 40
+          }
+        ],
+        "onLineTimestamps": [
+          11,
+          12,
+          22,
+          22.5,
+          23,
+          24,
+          24.5,
+          25,
+          25.5,
+          26,
+          26.5,
+          27,
+          27.5,
+          28
+        ],
+        "onLineSegments": [
+          {
+            "startFrame": 22,
+            "endFrame": 22,
+            "startTime": 11,
+            "endTime": 11,
+            "duration": 0.5,
+            "worstClearancePx": 39
+          },
+          {
+            "startFrame": 24,
+            "endFrame": 24,
+            "startTime": 12,
+            "endTime": 12,
+            "duration": 0.5,
+            "worstClearancePx": 42
+          },
+          {
+            "startFrame": 44,
+            "endFrame": 46,
+            "startTime": 22,
+            "endTime": 23,
+            "duration": 1.5,
+            "worstClearancePx": 10
+          },
+          {
+            "startFrame": 48,
+            "endFrame": 56,
+            "startTime": 24,
+            "endTime": 28,
+            "duration": 4.5,
+            "worstClearancePx": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "analysis_16b702edcf8da2cb839d1b611d893a48",
+      "videoName": "Video Project 3.mp4",
+      "videoDuration": 0,
+      "videoUrl": "/uploads/29fd6c4822850475e9ba007318120458",
+      "createdAt": "2026-02-01T04:21:33.420Z",
+      "score": 78,
+      "grade": "C",
+      "summary": "Lane guidance analysis complete. On-line frames: 0/5. Worst at ~3s.",
+      "events": [],
+      "breakdown": {
+        "lane_discipline": {
+          "score": 100,
+          "maxScore": 100,
+          "deductions": [
+            {
+              "reason": "No-lane frames (14)",
+              "points": -15
+            }
+          ],
+          "tips": [
+            "Keep the vehicle centered in the lane",
+            "Avoid drifting during turns and lane changes",
+            "Check camera angle/visibility if lanes are not detected"
+          ]
+        }
+      },
+      "debug": {
+        "sampleFps": 2,
+        "modelInput": {
+          "dstW": 640,
+          "dstH": 640
+        },
+        "onLineFrameCount": 0,
+        "onLineFrames": [],
+        "onLineTimestamps": [],
+        "onLineSegments": []
       }
     }
   ]

@@ -1,4 +1,5 @@
-import { AnalysisResult, UploadProgress, getGradeFromScore } from '@/types/analysis';
+import { AnalysisResult, UploadProgress, Grade } from "@/types/analysis";
+import { getGradeFromScore } from "@/lib/grading";
 
 // Mock video URL (using a sample video)
 const MOCK_VIDEO_URL = 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4';
@@ -11,7 +12,7 @@ const MOCK_ANALYSIS: AnalysisResult = {
   videoUrl: MOCK_VIDEO_URL,
   createdAt: new Date().toISOString(),
   score: 72,
-  grade: 'C',
+  grade: 'C' as Grade,
   summary:
     'Your driving shows room for improvement. Focus on maintaining safe following distances and smoother braking patterns.',
   events: [
@@ -116,11 +117,6 @@ const MOCK_ANALYSIS: AnalysisResult = {
 };
 
 // --- POLISHED upload + analyze ---
-// Supports:
-// - real upload progress via XMLHttpRequest when using API_ENDPOINTS.analyze
-// - AbortController cancellation
-// - staged processing progress while waiting
-// - demo fallback (mock) when API not available
 
 type UploadAndAnalyzeOptions = {
   signal?: AbortSignal;
@@ -190,7 +186,7 @@ function startStagedProcessing(onProgress: (p: UploadProgress) => void) {
 }
 
 /**
- * Real upload using XHR so we can get upload progress events (fetch can’t reliably do that yet).
+ * Real upload using XHR so we can get upload progress events.
  */
 function uploadViaXHR(
   url: string,
@@ -308,19 +304,47 @@ export async function uploadAndAnalyze(
       while (true) {
         if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
 
-        const statusRes = await fetch(`/api/jobs/${jobId}`, { signal });
-        if (!statusRes.ok) throw new Error('Failed to fetch processing status.');
+        const jobUrl = API_ENDPOINTS.getJob(jobId);
+        const statusRes = await fetch(jobUrl, { signal });
+
+        if (!statusRes.ok) {
+          const text = await statusRes.text().catch(() => '');
+          throw new Error(
+            `Failed to fetch processing status (${statusRes.status} ${statusRes.statusText}) from ${jobUrl}. ` +
+              (text ? `Body: ${text}` : '')
+          );
+        }
+
         const statusJson = await statusRes.json();
 
         if (statusJson.status === 'error') {
           throw new Error(statusJson.message || 'Processing failed.');
         }
 
-        if (statusJson.status === 'complete') {
+        // If backend includes the result directly in job completion, accept it
+        if (statusJson.status === 'complete' && statusJson.result) {
+          stagedController.stop();
+          const result = statusJson.result as AnalysisResult;
+          if (!result.grade) result.grade = getGradeFromScore(result.score);
+          onProgress({ status: 'complete', progress: 100, message: 'Analysis complete!', analysisId: result.id });
+          return result;
+        }
+
+        // If backend returns a resultId, fetch analysis from /api/analysis/:id
+        if (statusJson.status === 'complete' && statusJson.resultId) {
           stagedController.stop();
 
-          const resultRes = await fetch(`/api/analysis/${statusJson.resultId}`, { signal });
-          if (!resultRes.ok) throw new Error('Failed to fetch analysis result.');
+          const resultUrl = API_ENDPOINTS.getAnalysis(String(statusJson.resultId));
+          const resultRes = await fetch(resultUrl, { signal });
+
+          if (!resultRes.ok) {
+            const text = await resultRes.text().catch(() => '');
+            throw new Error(
+              `Failed to fetch analysis result (${resultRes.status} ${resultRes.statusText}) from ${resultUrl}. ` +
+                (text ? `Body: ${text}` : '')
+            );
+          }
+
           const result = (await resultRes.json()) as AnalysisResult;
 
           if (!result.grade) result.grade = getGradeFromScore(result.score);
@@ -360,9 +384,15 @@ type FetchOptions = {
 
 /** Fetch an analysis from the backend and cache it in localStorage. */
 export async function fetchAnalysis(id: string, options: FetchOptions = {}): Promise<AnalysisResult> {
-  const res = await fetch(API_ENDPOINTS.getAnalysis(id), { signal: options.signal });
+  const url = API_ENDPOINTS.getAnalysis(id);
+  const res = await fetch(url, { signal: options.signal });
   if (!res.ok) {
-    throw new Error(res.status === 404 ? 'Analysis not found' : 'Failed to load analysis');
+    const text = await res.text().catch(() => '');
+    throw new Error(
+      res.status === 404
+        ? `Analysis not found (404) at ${url}. ${text}`
+        : `Failed to load analysis (${res.status}) at ${url}. ${text}`
+    );
   }
   const analysis = (await res.json()) as AnalysisResult;
   if (!analysis.grade) analysis.grade = getGradeFromScore(analysis.score);
@@ -372,8 +402,12 @@ export async function fetchAnalysis(id: string, options: FetchOptions = {}): Pro
 
 /** Fetch recent analyses from the backend (optional UI). */
 export async function fetchHistory(options: FetchOptions = {}): Promise<AnalysisResult[]> {
-  const res = await fetch(API_ENDPOINTS.getHistory, { signal: options.signal });
-  if (!res.ok) throw new Error('Failed to load history');
+  const url = API_ENDPOINTS.getHistory;
+  const res = await fetch(url, { signal: options.signal });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Failed to load history (${res.status}) at ${url}. ${text}`);
+  }
   const items = (await res.json()) as AnalysisResult[];
   for (const item of items) {
     if (!item.grade) item.grade = getGradeFromScore(item.score);
@@ -438,6 +472,7 @@ export function validateVideoFile(file: File): { valid: boolean; error?: string 
 // API endpoints (for when real backend is connected)
 export const API_ENDPOINTS = {
   analyze: '/api/analyze',
+  getJob: (jobId: string) => `/api/jobs/${jobId}`,
   getAnalysis: (id: string) => `/api/analysis/${id}`,
   getHistory: '/api/history',
-};
+} as const;

@@ -76,16 +76,6 @@ export function UploadProgress({ progress, fileName, onCancel }: UploadProgressP
       {/* Processing animation */}
       {isProcessing && (
         <div className="flex flex-col items-center gap-4 py-8">
-          <div className="relative">
-            <div className="absolute inset-0 gradient-primary rounded-full blur-xl opacity-30 animate-pulse" />
-            <div className="relative gradient-primary p-6 rounded-full">
-              <Brain className="h-12 w-12 text-white animate-pulse" />
-            </div>
-          </div>
-          <div className="text-center">
-            <p className="font-semibold text-lg">AI is analyzing your driving</p>
-            <p className="text-muted-foreground">This typically takes 10-30 seconds</p>
-          </div>
           <div className="flex items-center gap-2">
             <Loader2 className="h-4 w-4 animate-spin text-primary" />
             <span className="text-sm text-muted-foreground">Detecting events...</span>
