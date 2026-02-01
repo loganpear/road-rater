@@ -39,7 +39,7 @@ export function FeatureCards() {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            How <span className="text-gradient">DriveScore AI</span> Works
+            How <span className="text-gradient">Road-Rater AI</span> Works
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Upload your dashcam footage and let our AI analyze your driving patterns to help you become a safer driver.

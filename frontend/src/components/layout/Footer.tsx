@@ -12,15 +12,15 @@ export function Footer() {
                 <Shield className="absolute -top-0.5 -right-0.5 h-2 w-2 text-white" />
               </div>
             </div>
-            <span className="font-semibold text-gradient">Road Rater AI</span>
+            <span className="font-semibold text-gradient">Road-Rater AI</span>
           </div>
 
           <p className="text-sm text-muted-foreground text-center">
-            AI-powered driving safety analysis. Drive safer, score higher.
+            AI-powered driving safety analysis. Drive safer, score higher. Built for Spartahack XI
           </p>
 
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Road Rater AI. All rights reserved.
+            © {new Date().getFullYear()} Road-Rater AI. All rights reserved.
           </p>
         </div>
       </div>

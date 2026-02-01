@@ -83,7 +83,7 @@ export function Hero() {
         {/* Car 3 - moving up slower */}
         <div className="absolute left-[56%] animate-car-up-slow" style={{ animationDelay: '3.5s' }}>
             <div className="relative" onClick={handleHonk}>
-            <Car className="w-6 h-6 text-emerald-400" style={{ transform: 'rotate(270deg)' }} />
+            <Car className="w-6 h-6 text-indigo-500" style={{ transform: 'rotate(270deg)' }} />
             </div>
         </div>
       </div>
@@ -106,14 +106,14 @@ export function Hero() {
       </div>
 
       {/* Dashboard HUD elements */}
-      <div className="absolute top-20 left-8 opacity-40 hidden lg:block animate-fade-in">
-        <div className="flex items-center gap-2 text-primary/70 text-sm font-mono">
+      <div className="absolute top-5 left-8 opacity-80 hidden lg:block animate-fade-in">
+        <div className="flex items-center gap-2 text-primary/100 text-sm font-mono">
           <Shield className="w-4 h-4" />
           <span>SAFETY SYSTEM ACTIVE</span>
         </div>
       </div>
       
-      <div className="absolute top-20 right-8 opacity-40 hidden lg:block animate-fade-in" style={{ animationDelay: '0.5s' }}>
+      <div className="absolute top-5 right-8 opacity-80 hidden lg:block animate-fade-in" style={{ animationDelay: '0.5s' }}>
         <div className="flex items-center gap-2 text-amber-400/70 text-sm font-mono">
           <AlertTriangle className="w-4 h-4 animate-pulse" />
           <span>RECORDING</span>
