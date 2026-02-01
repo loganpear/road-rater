@@ -14,6 +14,16 @@ Scoring, UI, and insurance logic are handled downstream.
 
 ---
 
+## Model Credit
+
+This project uses the [YOLOP](https://github.com/hustvl/YOLOP) (You Only Look Once for Panoptic driving perception) model for lane boundary and road marking detection.
+
+Original authors: [HUST Vision and Learning Lab](https://github.com/hustvl)
+
+Paper: [YOLOP: You Only Look Once for Panoptic Driving Perception](https://arxiv.org/abs/2108.11250)
+
+---
+
 ## Core Approach
 
 This is a lane-based ego-vehicle analysis problem, not object detection.
