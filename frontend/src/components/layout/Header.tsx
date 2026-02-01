@@ -26,28 +26,6 @@ export function Header() {
         </Link>
 
         <nav className="flex items-center gap-6">
-          <Link
-            to="/upload"
-            className={cn(
-              'text-sm font-medium transition-colors',
-              location.pathname === '/upload'
-                ? 'text-primary'
-                : 'text-muted-foreground hover:text-foreground'
-            )}
-          >
-            Upload
-          </Link>
-          <Link
-            to="/results/demo"
-            className={cn(
-              'text-sm font-medium transition-colors',
-              location.pathname.startsWith('/results')
-                ? 'text-primary'
-                : 'text-muted-foreground hover:text-foreground'
-            )}
-          >
-            Demo Results
-          </Link>
         </nav>
       </div>
     </header>
