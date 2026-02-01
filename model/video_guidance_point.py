@@ -1,12 +1,18 @@
 import cv2
 import numpy as np
 import onnxruntime as ort
+import csv
 
 # ================= USER SETTINGS =================
 
 VIDEO_PATH = "inference/videos/test2.mp4"
 OUTPUT_PATH = "inference/output_guidance.mp4"
+<<<<<<< HEAD:model/video_guidance_point.py
 MODEL_PATH = "/yolop-640-640.onnx"
+=======
+CSV_OUTPUT_PATH = "inference/output_guidance.csv"
+MODEL_PATH = "weights/yolop-640-640.onnx"
+>>>>>>> 5f293992f85c6d3472324458d20590f56057491f:backend/model/video_guidance_point.py
 
 INPUT_W, INPUT_H = 640, 640
 
@@ -114,6 +120,13 @@ def main():
     print(f"Bounding band center = {band_center:.3f}")
     print("Processing video...\n")
 
+    # Open CSV file for writing
+    csv_file = open(CSV_OUTPUT_PATH, 'w', newline='')
+    csv_writer = csv.writer(csv_file)
+    csv_writer.writerow(['frame', 'timestamp_sec', 'clearance_px', 'status'])
+
+    frame_num = 0
+
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -146,6 +159,9 @@ def main():
             distances = np.abs(xs - vehicle_x)
             min_distances.append(np.min(distances))
 
+        # Calculate timestamp
+        timestamp_sec = frame_num / fps if fps > 0 else 0
+
         if min_distances:
             # Use MINIMUM distance - if any row has vehicle on line, it's bad
             clearance = int(np.min(min_distances))
@@ -156,9 +172,15 @@ def main():
             color = (0, 0, 255) if on_line else (0, 255, 0)
 
             text = f"Clearance: {clearance}px | {status}"
+            
+            # Write to CSV
+            csv_writer.writerow([frame_num, f"{timestamp_sec:.3f}", clearance, status])
         else:
             text = "NO LANE"
             color = (0, 0, 255)
+            
+            # Write to CSV
+            csv_writer.writerow([frame_num, f"{timestamp_sec:.3f}", '', 'NO LANE'])
 
         # Vehicle center (red)
         cv2.line(frame, (vehicle_x, 0), (vehicle_x, h), (0, 0, 255), 2)
@@ -184,13 +206,16 @@ def main():
 
         out.write(frame)
         cv2.imshow("YOLOP Lane Guidance (Band Offset)", frame)
+        frame_num += 1
         if cv2.waitKey(1) == 27:
             break
 
     cap.release()
     out.release()
+    csv_file.close()
     cv2.destroyAllWindows()
-    print(f"\nSaved: {OUTPUT_PATH}")
+    print(f"\nSaved video: {OUTPUT_PATH}")
+    print(f"Saved CSV: {CSV_OUTPUT_PATH}")
 
 
 if __name__ == "__main__":
