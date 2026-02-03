@@ -1,5 +1,5 @@
 # road-rater
-Spartahack  hackathon project
+Spartahack 11 hackathon project
 
 ## Objective
 
@@ -36,17 +36,6 @@ The system:
 
 ---
 
-## Dataset
-
-TuSimple Lane Detection Dataset  
-https://www.kaggle.com/datasets/manideep1108/tusimple
-
-- Provides lane polylines, not bounding boxes
-- Ideal for geometric reasoning
-- Used for model training and validation
-
----
-
 ## Architecture Overview
 
 Video processing flow:
@@ -60,8 +49,6 @@ Video processing flow:
 7. Violation event output (JSON)
 
 ---
-
-## Model
 
 ### Lane Detection
 
